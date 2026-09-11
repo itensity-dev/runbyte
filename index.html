@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Runbyte — Software studio. Web, mobile, AI & cloud engineering.</title>
+  <meta name="description" content="Runbyte is an independent software studio. We design and build web platforms, mobile apps, AI integrations and cloud infrastructure that keep running after launch day.">
+  <meta name="theme-color" content="#141311">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://runbyte.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Runbyte — Software studio">
+  <meta property="og:description" content="Web platforms, mobile apps, AI integrations and cloud infrastructure. Designed and engineered to keep running.">
+  <meta property="og:image" content="https://runbyte.dev/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-normal-200-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jetbrains-mono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="is-loading">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__word"><span class="loader__mask"><span class="loader__text">Runbyte</span></span></div>
+      <div class="loader__meta">
+        <span class="mono">Software studio</span>
+        <span class="mono loader__count"><span id="loaderCount">00</span></span>
+      </div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+    </div>
+  </div>
+
+  <!-- ============ CURSOR ============ -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__label"><span></span></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav is-pre" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__logo" data-scroll aria-label="Runbyte home">
+        <svg class="nav__mark" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="1" y="1" width="16" height="16" stroke="currentColor" stroke-width="1.5"/><path d="M5 13V5h4.5a2.5 2.5 0 0 1 0 5H5m4.5 0L13 13" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Runbyte<sup>®</sup></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#services" data-scroll><span>Services</span></a>
+        <a href="#work" data-scroll><span>Work</span></a>
+        <a href="#process" data-scroll><span>Process</span></a>
+        <a href="#about" data-scroll><span>Studio</span></a>
+        <a href="#faq" data-scroll><span>FAQ</span></a>
+      </nav>
+      <div class="nav__right">
+        <span class="nav__time mono" id="localTime" aria-hidden="true">— —:—</span>
+        <a href="#contact" class="btn btn--sm" data-scroll data-magnetic><span class="btn__label">Start a project</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+        <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu__inner">
+      <nav class="menu__links" aria-label="Mobile">
+        <a href="#services" data-scroll><span class="mono">01</span>Services</a>
+        <a href="#work" data-scroll><span class="mono">02</span>Work</a>
+        <a href="#process" data-scroll><span class="mono">03</span>Process</a>
+        <a href="#about" data-scroll><span class="mono">04</span>Studio</a>
+        <a href="#faq" data-scroll><span class="mono">05</span>FAQ</a>
+        <a href="#contact" data-scroll><span class="mono">06</span>Contact</a>
+      </nav>
+      <div class="menu__foot">
+        <a href="mailto:hello@runbyte.dev" class="menu__mail">hello@runbyte.dev</a>
+        <div class="menu__socials mono">
+          <a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">Dribbble</a><a href="#">X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__top">
+        <div class="hero__eyebrow mono">
+          <span class="dot"></span>
+          <span>Independent software studio</span>
+        </div>
+        <div class="hero__eyebrow mono hero__eyebrow--r">
+          <span>Est. 2017</span><span class="sep">/</span><span>Working worldwide</span>
+        </div>
+      </div>
+
+      <h1 class="hero__title" data-split="lines">
+        We build digital products<br>
+        that <em>actually</em> run.
+      </h1>
+
+      <div class="hero__row">
+        <p class="hero__lead" data-reveal>
+          Web platforms, mobile apps, AI features and the cloud underneath them.
+          Designed with care, engineered to survive launch day — and the year after it.
+        </p>
+        <div class="hero__cta" data-reveal>
+          <a href="#contact" class="btn" data-scroll data-magnetic><span class="btn__label">Start a project</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+          <a href="#work" class="link-underline" data-scroll>See selected work</a>
+        </div>
+      </div>
+
+      <div class="hero__media" data-clip>
+        <figure class="hero__figure">
+          <img src="assets/img/hero.jpg" alt="" width="2400" height="1400" data-parallax="0.18" fetchpriority="high">
+          <figcaption class="mono">
+            <span>Fig. 01 — Studio, late shift</span>
+            <span>47°N · 8°E</span>
+          </figcaption>
+        </figure>
+        <div class="hero__scroll mono" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" data-marquee>
+        <span>Web development</span><i>✦</i>
+        <span>Product design</span><i>✦</i>
+        <span>Mobile apps</span><i>✦</i>
+        <span>AI integration</span><i>✦</i>
+        <span>Cloud &amp; DevOps</span><i>✦</i>
+        <span>Long-term support</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ MANIFESTO / ABOUT ============ -->
+    <section class="section manifesto" id="about">
+      <div class="section__head">
+        <span class="section__index mono">(01)</span>
+        <span class="section__label mono">The studio</span>
+      </div>
+      <p class="manifesto__text" data-fill>
+        Runbyte is a 30-person team of engineers and designers who like shipping more than talking about shipping.
+        We take on a handful of projects at a time, work directly with founders and product teams,
+        and stay on after launch — because software isn't finished when it's deployed, it's finished when it's boring.
+      </p>
+      <div class="manifesto__grid">
+        <figure class="manifesto__figure" data-clip>
+          <img src="assets/img/about.jpg" alt="" width="1200" height="1500" data-parallax="0.12" loading="lazy">
+        </figure>
+        <div class="manifesto__facts">
+          <div class="fact" data-reveal>
+            <span class="mono">Founded</span>
+            <strong>2017, by two engineers who kept getting hired to fix agency work.</strong>
+          </div>
+          <div class="fact" data-reveal>
+            <span class="mono">Team</span>
+            <strong>32 people. Senior-heavy. No account managers between you and the people building.</strong>
+          </div>
+          <div class="fact" data-reveal>
+            <span class="mono">Clients</span>
+            <strong>Fintech, logistics, healthcare, retail, and a few things we can't talk about yet.</strong>
+          </div>
+          <a href="#contact" class="link-underline" data-scroll data-reveal>Meet the team ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services">
+      <div class="section__head">
+        <span class="section__index mono">(02)</span>
+        <span class="section__label mono">What we do</span>
+        <h2 class="section__title" data-split="lines">Six things we do<br>properly.</h2>
+      </div>
+
+      <ul class="services__list" id="servicesList">
+        <li class="service" data-img="assets/img/service-01.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">01</span>
+            <span class="service__name">Web development</span>
+            <span class="service__tags mono">Next.js · Astro · Headless CMS · Webflow</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Marketing sites that load in under a second, web apps with real business logic, and platforms with thousands of daily users. We pick the stack for the job, not for the résumé.</p>
+              <ul class="service__points mono">
+                <li>Performance budgets from day one</li>
+                <li>Accessible by default (WCAG 2.2 AA)</li>
+                <li>CMS your marketing team will actually use</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="service" data-img="assets/img/service-02.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">02</span>
+            <span class="service__name">Product &amp; UX design</span>
+            <span class="service__tags mono">Research · Design systems · Prototyping</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Interfaces people don't need a tutorial for. We start with user research and end with a design system your engineers can build from without guessing.</p>
+              <ul class="service__points mono">
+                <li>Discovery workshops &amp; user interviews</li>
+                <li>Figma design systems with tokens</li>
+                <li>Clickable prototypes before a line of code</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="service" data-img="assets/img/service-03.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">03</span>
+            <span class="service__name">Mobile apps</span>
+            <span class="service__tags mono">React Native · Swift · Kotlin · Flutter</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Native when it matters, cross-platform when it doesn't. Shipped to both stores, instrumented, and maintained through every OS update.</p>
+              <ul class="service__points mono">
+                <li>App Store &amp; Play Store submission handled</li>
+                <li>Offline-first architecture where needed</li>
+                <li>Crash-free rate above 99.8% on our portfolio</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="service" data-img="assets/img/service-04.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">04</span>
+            <span class="service__name">AI integration</span>
+            <span class="service__tags mono">LLM features · RAG · Agents · Automation</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Language-model features wired into the tools you already run — search over your documents, support copilots, document processing, internal agents. Evaluated, monitored, cost-controlled.</p>
+              <ul class="service__points mono">
+                <li>Model-agnostic: Claude, OpenAI, open-weight</li>
+                <li>Eval suites before production, not after</li>
+                <li>Data stays in your cloud</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="service" data-img="assets/img/service-05.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">05</span>
+            <span class="service__name">Cloud &amp; DevOps</span>
+            <span class="service__tags mono">AWS · Cloudflare · Kubernetes · Terraform</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Infrastructure as code, pipelines that don't need a wizard to run, observability that tells you what broke before your customers do. And a cloud bill that makes sense.</p>
+              <ul class="service__points mono">
+                <li>CI/CD, preview environments, rollbacks</li>
+                <li>Monitoring, alerting, on-call runbooks</li>
+                <li>Cost reviews — we've cut bills by 60%</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="service" data-img="assets/img/service-06.jpg">
+          <button class="service__row" aria-expanded="false">
+            <span class="service__num mono">06</span>
+            <span class="service__name">Support &amp; growth</span>
+            <span class="service__tags mono">SLA · Audits · Performance · Security</span>
+            <span class="service__plus" aria-hidden="true"></span>
+          </button>
+          <div class="service__body">
+            <div class="service__body-inner">
+              <p>Long-term engineering partnership on a retainer: dependency updates, security patches, performance work, and a team that already knows the codebase when you need a new feature.</p>
+              <ul class="service__points mono">
+                <li>Response-time SLAs, not "best effort"</li>
+                <li>Quarterly performance &amp; security audits</li>
+                <li>Dedicated engineers, not a rotating pool</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="service__preview" id="servicePreview" aria-hidden="true"><img src="" alt=""></div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section work" id="work">
+      <div class="section__head">
+        <span class="section__index mono">(03)</span>
+        <span class="section__label mono">Selected work</span>
+        <h2 class="section__title" data-split="lines">Things we've shipped<br>and still maintain.</h2>
+      </div>
+      <div class="work__pin" id="workPin">
+        <div class="work__track" id="workTrack">
+          <article class="project" data-cursor="View case">
+            <a href="#" class="project__link">
+              <figure class="project__figure"><img src="assets/img/work-01.jpg" alt="Northwind Logistics fleet operations platform" width="1600" height="1100" loading="lazy"></figure>
+              <div class="project__meta">
+                <span class="mono">01 / Web platform · 2025</span>
+                <h3>Northwind Logistics</h3>
+                <p>Fleet operations platform for 2,400 vehicles across 11 countries. Real-time telemetry, dispatch, driver app.</p>
+              </div>
+            </a>
+          </article>
+          <article class="project" data-cursor="View case">
+            <a href="#" class="project__link">
+              <figure class="project__figure"><img src="assets/img/work-02.jpg" alt="Halden Bank mobile banking app" width="1600" height="1100" loading="lazy"></figure>
+              <div class="project__meta">
+                <span class="mono">02 / Mobile · 2025</span>
+                <h3>Halden Bank</h3>
+                <p>Mobile banking redesign on iOS and Android. 4.8★ rating six weeks after relaunch.</p>
+              </div>
+            </a>
+          </article>
+          <article class="project" data-cursor="View case">
+            <a href="#" class="project__link">
+              <figure class="project__figure"><img src="assets/img/work-03.jpg" alt="Meridian Health patient portal" width="1600" height="1100" loading="lazy"></figure>
+              <div class="project__meta">
+                <span class="mono">03 / Product + AI · 2024</span>
+                <h3>Meridian Health</h3>
+                <p>Patient portal with AI-assisted triage. HIPAA-compliant, 38% fewer misrouted appointments.</p>
+              </div>
+            </a>
+          </article>
+          <article class="project" data-cursor="View case">
+            <a href="#" class="project__link">
+              <figure class="project__figure"><img src="assets/img/work-04.jpg" alt="Kova Coffee e-commerce" width="1600" height="1100" loading="lazy"></figure>
+              <div class="project__meta">
+                <span class="mono">04 / E-commerce · 2024</span>
+                <h3>Kova Coffee</h3>
+                <p>Headless storefront with subscriptions. Checkout conversion up 27% after the rebuild.</p>
+              </div>
+            </a>
+          </article>
+          <article class="project" data-cursor="View case">
+            <a href="#" class="project__link">
+              <figure class="project__figure"><img src="assets/img/work-05.jpg" alt="Atlas Studio 3D configurator" width="1600" height="1100" loading="lazy"></figure>
+              <div class="project__meta">
+                <span class="mono">05 / WebGL · 2023</span>
+                <h3>Atlas Studio</h3>
+                <p>Brand site with a real-time 3D furniture configurator. Runs at 60fps on a three-year-old phone.</p>
+              </div>
+            </a>
+          </article>
+          <div class="project project--end">
+            <a href="#contact" class="project__all" data-scroll data-magnetic>
+              <span class="mono">Want to be next?</span>
+              <strong>Start a project ↗</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NUMBERS ============ -->
+    <section class="section numbers">
+      <div class="numbers__grid">
+        <div class="number" data-reveal><strong><span data-count="140">0</span>+</strong><span class="mono">Projects shipped</span></div>
+        <div class="number" data-reveal><strong><span data-count="9">0</span> yrs</strong><span class="mono">In business</span></div>
+        <div class="number" data-reveal><strong><span data-count="32">0</span></strong><span class="mono">Engineers &amp; designers</span></div>
+        <div class="number" data-reveal><strong><span data-count="96">0</span>%</strong><span class="mono">Clients who come back</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section process" id="process">
+      <div class="section__head">
+        <span class="section__index mono">(04)</span>
+        <span class="section__label mono">How we work</span>
+        <h2 class="section__title" data-split="lines">Four steps.<br>No surprises.</h2>
+      </div>
+      <div class="process__stack" id="processStack">
+        <article class="step">
+          <div class="step__head"><span class="mono">01</span><span class="mono">1–2 weeks</span></div>
+          <h3>Discovery</h3>
+          <p>We talk to your users, dig into the existing system, and write down what "done" means. You get a scoped plan with a fixed price and a real timeline — not a vague estimate.</p>
+          <ul class="mono"><li>Stakeholder interviews</li><li>Technical audit</li><li>Scope &amp; roadmap</li></ul>
+        </article>
+        <article class="step">
+          <div class="step__head"><span class="mono">02</span><span class="mono">2–4 weeks</span></div>
+          <h3>Design</h3>
+          <p>Wireframes, then real interface design, then a prototype you can put in front of customers. Engineers sit in every review so nothing gets designed that can't be built.</p>
+          <ul class="mono"><li>UX flows &amp; wireframes</li><li>UI &amp; design system</li><li>Usability testing</li></ul>
+        </article>
+        <article class="step">
+          <div class="step__head"><span class="mono">03</span><span class="mono">4–12 weeks</span></div>
+          <h3>Build</h3>
+          <p>Two-week sprints, a demo at the end of every one, and a staging environment you can open at any time. Tests, code review and CI aren't optional extras.</p>
+          <ul class="mono"><li>Weekly demos</li><li>Automated testing</li><li>Staging from week one</li></ul>
+        </article>
+        <article class="step">
+          <div class="step__head"><span class="mono">04</span><span class="mono">Ongoing</span></div>
+          <h3>Launch &amp; grow</h3>
+          <p>We handle the release, monitor the first weeks closely, then keep improving with real usage data. Most of our clients stay with us for years.</p>
+          <ul class="mono"><li>Release management</li><li>Monitoring &amp; on-call</li><li>Roadmap &amp; retainer</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="section stack">
+      <div class="section__head">
+        <span class="section__index mono">(05)</span>
+        <span class="section__label mono">Tools we run</span>
+      </div>
+      <div class="stack__grid">
+        <div class="stack__group" data-reveal>
+          <h4 class="mono">Frontend</h4>
+          <ul><li>TypeScript</li><li>React</li><li>Next.js</li><li>Astro</li><li>Vue</li><li>Three.js</li><li>GSAP</li></ul>
+        </div>
+        <div class="stack__group" data-reveal>
+          <h4 class="mono">Backend</h4>
+          <ul><li>Node.js</li><li>Go</li><li>Python</li><li>PostgreSQL</li><li>Redis</li><li>GraphQL</li><li>gRPC</li></ul>
+        </div>
+        <div class="stack__group" data-reveal>
+          <h4 class="mono">Mobile</h4>
+          <ul><li>Swift</li><li>Kotlin</li><li>React Native</li><li>Flutter</li><li>Expo</li></ul>
+        </div>
+        <div class="stack__group" data-reveal>
+          <h4 class="mono">Cloud &amp; AI</h4>
+          <ul><li>AWS</li><li>Cloudflare</li><li>Kubernetes</li><li>Terraform</li><li>Claude</li><li>OpenAI</li><li>LangGraph</li><li>pgvector</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section quotes" id="clients">
+      <div class="section__head">
+        <span class="section__index mono">(06)</span>
+        <span class="section__label mono">Clients say</span>
+      </div>
+      <div class="quotes__slider" id="quotes">
+        <div class="quotes__track">
+          <blockquote class="quote is-active">
+            <p>“They rebuilt our dispatch platform while the old one was still in production. Zero downtime, and the team knew our domain better than some of our own people by month two.”</p>
+            <footer><strong>Mikael Strand</strong><span class="mono">CTO, Northwind Logistics</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“We'd been burned by two agencies before. Runbyte gave us a fixed price, hit the date, and then stuck around. That last part is the rare one.”</p>
+            <footer><strong>Priya Raman</strong><span class="mono">Head of Product, Halden Bank</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“The AI triage feature could have been a gimmick. They insisted on building the evaluation harness first, and that's why it actually works in a clinic.”</p>
+            <footer><strong>Dr. Elena Kovač</strong><span class="mono">Medical Director, Meridian Health</span></footer>
+          </blockquote>
+        </div>
+        <div class="quotes__nav">
+          <button class="quotes__btn" id="quotePrev" aria-label="Previous testimonial">←</button>
+          <span class="mono" id="quoteCount">01 / 03</span>
+          <button class="quotes__btn" id="quoteNext" aria-label="Next testimonial">→</button>
+        </div>
+      </div>
+      <div class="clients__row" aria-label="Clients">
+        <span>Northwind</span><span>Halden Bank</span><span>Meridian</span><span>Kova</span><span>Atlas</span><span>Fjord Energy</span><span>Lumen</span>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <div class="section__head">
+        <span class="section__index mono">(07)</span>
+        <span class="section__label mono">Questions</span>
+        <h2 class="section__title" data-split="lines">Things people ask<br>before they call.</h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary><span>How much does a project cost?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>Most engagements land between €25k and €250k. After a paid discovery phase (from €4k) you get a fixed price and a timeline. We don't do open-ended hourly work on new builds.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span>Who will actually work on my project?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>A dedicated team of 2–6 people: a lead engineer, designers and developers, plus a producer who runs the schedule. You talk to them directly in a shared Slack channel — no account managers in between.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span>Do you work with existing codebases?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>Yes — about a third of our work is taking over, stabilising and extending systems built by someone else. We start with a technical audit so you know what you have before we touch it.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span>Which time zones do you cover?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>The core team is in Central Europe with overlap from 8:00 to 20:00 CET. We've run projects with clients in New York, Dubai and Singapore without anyone waking up at 4am.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span>Who owns the code?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>You do, from the first commit. Everything lives in your repositories and your cloud accounts. If you ever want to leave, you take everything with you — that's the deal.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contact">
+      <div class="cta__bg"><img src="assets/img/cta.jpg" alt="" width="2400" height="1200" data-parallax="0.2" loading="lazy"></div>
+      <div class="cta__inner">
+        <span class="mono cta__eyebrow">(08) — Let's talk</span>
+        <h2 class="cta__title" data-split="lines">Have something<br>that needs to <em>run</em>?</h2>
+        <div class="cta__row">
+          <a href="mailto:hello@runbyte.dev" class="cta__mail" data-magnetic>hello@runbyte.dev</a>
+          <div class="cta__side">
+            <p>Send a few lines about what you're building. We reply within one business day, usually with a couple of questions and a time to talk.</p>
+            <a href="mailto:hello@runbyte.dev" class="btn btn--light" data-magnetic><span class="btn__label">Book a call</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <span class="mono footer__label">Sitemap</span>
+        <a href="#services" data-scroll>Services</a>
+        <a href="#work" data-scroll>Work</a>
+        <a href="#process" data-scroll>Process</a>
+        <a href="#about" data-scroll>Studio</a>
+        <a href="#faq" data-scroll>FAQ</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__label">Socials</span>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Dribbble</a>
+        <a href="#">X / Twitter</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__label">Contact</span>
+        <a href="mailto:hello@runbyte.dev">hello@runbyte.dev</a>
+        <a href="tel:+41000000000">+41 00 000 00 00</a>
+        <span>Zurich · Remote-first</span>
+      </div>
+      <div class="footer__col footer__col--time">
+        <span class="mono footer__label">Local time</span>
+        <span class="footer__time mono" id="footerTime">— —:—</span>
+        <button class="footer__top mono" id="toTop">Back to top ↑</button>
+      </div>
+    </div>
+    <div class="footer__word" aria-hidden="true"><span>Runbyte</span></div>
+    <div class="footer__bottom mono">
+      <span>© 2026 Runbyte GmbH. All rights reserved.</span>
+      <span>Built in-house. No templates.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Imprint</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/SplitText.min.js"></script>
+  <script src="assets/js/vendor/CustomEase.min.js"></script>
+  <script src="assets/js/vendor/lenis.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
