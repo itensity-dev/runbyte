@@ -28,27 +28,42 @@ assets/fonts/         — Bricolage Grotesque, Instrument Serif, JetBrains Mono 
 assets/img/           — картинки. Сейчас плейсхолдеры-текстуры, заменяются 1:1
 docs/DESIGN.md        — дизайн-система и правила «не-AI стиля»
 docs/IMAGE-PROMPTS.md — промты для GPT Image с размерами и именами файлов
-_headers              — заголовки для Cloudflare Pages (кэш, безопасность)
+_headers              — заголовки для Cloudflare (кэш, безопасность)
+wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
+.assetsignore         — что не выгружать на Workers
 ```
 
 ## Замена картинок
 
 Сгенерируй по промтам из `docs/IMAGE-PROMPTS.md`, сохрани в `assets/img/` под теми же именами — код трогать не нужно.
 
-## Деплой на Cloudflare Pages
+## Деплой на Cloudflare Workers
 
-1. Запушь репозиторий на GitHub (ветка `main`).
-2. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → выбери репозиторий.
-3. Настройки сборки:
-   - Framework preset: **None**
+Сайт раздаётся как static assets воркера. Конфиг — `wrangler.jsonc`, лишние файлы (`.git`, `docs`, README) исключены через `.assetsignore`.
+
+### Вариант A — из дашборда, привязка к GitHub (деплой на каждый пуш)
+
+1. https://dash.cloudflare.com → **Compute (Workers)** → **Workers & Pages** → **Create** → вкладка **Workers** → **Import a repository**.
+2. Подключи GitHub-аккаунт, выбери репозиторий `itensity-dev/runbyte`.
+3. Настройки:
+   - Project name: `runbyte`
+   - Production branch: ветка, где лежит сайт (`main` или текущая рабочая ветка)
    - Build command: *(пусто)*
-   - Build output directory: `/`
-4. **Save and Deploy**. Через минуту сайт доступен на `*.pages.dev`.
-5. Свой домен: в проекте Pages → **Custom domains** → **Set up a custom domain**. Если домен уже в Cloudflare, DNS-запись создастся автоматически.
+   - Deploy command: `npx wrangler deploy`
+   - Root directory: `/`
+4. **Create and deploy**. Через ~1 минуту сайт будет на `https://runbyte.<твой-аккаунт>.workers.dev`.
 
-Каждый пуш в `main` — новый деплой; пуши в другие ветки дают preview-URL.
+### Вариант B — с компьютера одной командой
 
-Файл `_headers` Cloudflare подхватывает сам: агрессивный кэш на `assets/*` и базовые security-заголовки.
+```bash
+npm install
+npx wrangler login      # откроется браузер, разреши доступ
+npx wrangler deploy     # выведет URL вида https://runbyte.<аккаунт>.workers.dev
+```
+
+### Свой домен
+
+В воркере → **Settings** → **Domains & Routes** → **Add** → **Custom domain** → ввести домен. Если домен уже в Cloudflare, DNS создастся автоматически.
 
 ## Что поменять перед публикацией
 
