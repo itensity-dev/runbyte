@@ -1,31 +1,26 @@
-@font-face {font-family: 'Bricolage Grotesque';
-  font-style: normal;
-  font-weight: 200 800;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url(../fonts/bricolage-grotesque-normal-200-800.woff2) format('woff2');
-}
-@font-face {font-family: 'Instrument Serif';
+@font-face {font-family: 'Archivo';
   font-style: italic;
-  font-weight: 400;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
   font-display: swap;
-  src: url(../fonts/instrument-serif-italic-400.woff2) format('woff2');
+  src: url(../fonts/archivo-italic-100-900.woff2) format('woff2');
 }
-@font-face {font-family: 'Instrument Serif';
+@font-face {font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(../fonts/archivo-normal-100-900.woff2) format('woff2');
+}
+@font-face {font-family: 'IBM Plex Mono';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/instrument-serif-normal-400.woff2) format('woff2');
+  src: url(../fonts/ibm-plex-mono-normal-400.woff2) format('woff2');
 }
-@font-face {font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/jetbrains-mono-normal-400.woff2) format('woff2');
-}
-@font-face {font-family: 'JetBrains Mono';
+@font-face {font-family: 'IBM Plex Mono';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(../fonts/jetbrains-mono-normal-500.woff2) format('woff2');
+  src: url(../fonts/ibm-plex-mono-normal-500.woff2) format('woff2');
 }

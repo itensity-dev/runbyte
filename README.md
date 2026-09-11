@@ -1,6 +1,6 @@
 # Runbyte — сайт студии
 
-Статичный сайт (HTML + CSS + JS, без сборки). Анимации на GSAP 3.13 (ScrollTrigger, SplitText) и Lenis — все библиотеки и шрифты лежат в репозитории, внешних запросов у сайта нет.
+Статичный сайт (HTML + CSS + JS, без сборки). Анимации на GSAP 3.13 (ScrollTrigger, SplitText, ScrambleText) и Lenis — все библиотеки и шрифты лежат в репозитории, внешних запросов у сайта нет.
 
 ## Запуск локально
 
@@ -25,17 +25,16 @@ assets/css/fonts.css  — @font-face (шрифты самохостятся)
 assets/js/main.js     — все интеракции
 assets/js/vendor/     — gsap, ScrollTrigger, SplitText, CustomEase, lenis
 assets/fonts/         — Bricolage Grotesque, Instrument Serif, JetBrains Mono (woff2)
-assets/img/           — картинки. Сейчас плейсхолдеры-текстуры, заменяются 1:1
+assets/img/og.jpg     — превью для соцсетей (скриншот hero)
 docs/DESIGN.md        — дизайн-система и правила «не-AI стиля»
-docs/IMAGE-PROMPTS.md — промты для GPT Image с размерами и именами файлов
 _headers              — заголовки для Cloudflare (кэш, безопасность)
 wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
 .assetsignore         — что не выгружать на Workers
 ```
 
-## Замена картинок
+## Картинки
 
-Сгенерируй по промтам из `docs/IMAGE-PROMPTS.md`, сохрани в `assets/img/` под теми же именами — код трогать не нужно.
+Фотографий на сайте нет намеренно: все визуалы процедурные (canvas-поле байтов, SVG-схемы, флип-табло). Единственная картинка — `assets/img/og.jpg` для превью ссылки.
 
 ## Деплой на Cloudflare Workers
 
@@ -68,5 +67,5 @@ npx wrangler deploy     # выведет URL вида https://runbyte.<акка�
 ## Что поменять перед публикацией
 
 - `index.html`: адрес `hello@runbyte.dev`, телефон, город, ссылки на соцсети (`href="#"`), canonical/og URL (`https://runbyte.dev/`).
-- Кейсы в секции «Selected work» и цитаты клиентов — сейчас это вымышленные примеры-заглушки.
-- Цифры в секции «Numbers» (140+, 9 yrs, 32, 96%).
+- Цены в FAQ (€25k–€250k, discovery от €4k) и часы работы (8:00–20:00 CET).
+- «EST. 2017» в углу hero.
