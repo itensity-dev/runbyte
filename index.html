@@ -26,7 +26,7 @@
     <div class="loader__board" id="flapBoard" data-word="RUNBYTE"></div>
     <div class="loader__status mono">
       <span id="loaderStatus">BOOT</span>
-      <span id="loaderPct">000</span>
+      <span id="loaderPct">0x00</span>
     </div>
   </div>
 
@@ -51,6 +51,7 @@
       <a href="#faq" data-scroll>FAQ</a>
     </nav>
     <div class="nav__right">
+      <span class="nav__byte" id="navByte" title="Page progress, one byte" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
       <span class="nav__time mono" id="localTime">--:--</span>
       <a href="#contact" class="btn btn--sm" data-scroll><span>Start a project</span></a>
       <button class="nav__burger mono" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span>Menu</span></button>
@@ -82,7 +83,7 @@
         <span class="mono hero__corner hero__corner--tl">RUNBYTE / SOFTWARE STUDIO</span>
         <span class="mono hero__corner hero__corner--tr">EST. 2017</span>
         <span class="mono hero__corner hero__corner--bl"><span class="hero__live"></span>ALL SYSTEMS RUNNING</span>
-        <span class="mono hero__corner hero__corner--br">SCROLL ↓</span>
+        <span class="mono hero__corner hero__corner--br"><span class="hero__hint">Drag to flip dots · R resets</span><span>Scroll ↓</span></span>
       </div>
       <div class="hero__content">
         <h1 class="hero__title" data-split="lines">

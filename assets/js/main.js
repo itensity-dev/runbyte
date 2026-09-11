@@ -103,6 +103,7 @@
       this.c = canvas; this.ctx = canvas.getContext('2d');
       this.o = Object.assign({ mode: 'word', word: 'RUNBYTE', yCenter: 0.42 }, opts);
       this.p = 0; this.mouse = { x: -9999, y: -9999 }; this.time = 0; this.running = false; this.alpha = 1;
+      this.paint = new Map(); this.painting = false; this.lastPaint = 0; this.restoreAt = 0;
       this.particles = []; this.grid = []; this.cols = [];
       this.resize = this.resize.bind(this); this.frame = this.frame.bind(this);
       window.addEventListener('resize', this.resize);
@@ -112,6 +113,22 @@
       }
       this.resize();
     }
+    /* Paint: flip dots under the brush. Word dots go dark, empty cells light up. */
+    brush(x, y) {
+      if (this.o.mode !== 'word') return;
+      const s = this.s; const r = s * 1.6; const now = performance.now();
+      const gx = Math.round(x / s); const gy = Math.round(y / s); const n = Math.ceil(r / s);
+      for (let j = -n; j <= n; j++) for (let i = -n; i <= n; i++) {
+        const cx = gx + i; const cy = gy + j;
+        if (cx < 0 || cy < 0 || cx >= this.grid.cols || cy >= this.grid.rows) continue;
+        const dx = cx * s - x; const dy = cy * s - y;
+        if (dx * dx + dy * dy > r * r) continue;
+        this.paint.set(cy * this.grid.cols + cx, now);
+      }
+      for (const q of this.particles) { const dx = q.tx - x; const dy = q.ty - y; if (dx * dx + dy * dy < r * r) q.off = now; }
+      this.lastPaint = now; this.restoreAt = now + 3500;
+    }
+    clearPaint() { this.paint.clear(); this.particles.forEach((q) => { q.off = 0; }); this.restoreAt = 0; }
     resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const r = this.c.getBoundingClientRect();
@@ -164,8 +181,21 @@
       // background dot grid
       ctx.fillStyle = 'rgba(242,241,236,0.06)';
       for (let y = 0; y < this.grid.rows; y++) for (let x = 0; x < this.grid.cols; x++) ctx.fillRect(x * s - 0.75, y * s - 0.75, 1.5, 1.5);
+      // painted cells (user drawing) fade out a few seconds after the last stroke
+      const now = performance.now();
+      const fading = this.restoreAt && now > this.restoreAt;
+      const fade = fading ? Math.max(0, 1 - (now - this.restoreAt) / 900) : 1;
+      if (this.paint.size) {
+        ctx.fillStyle = YELLOW;
+        for (const key of this.paint.keys()) {
+          const cx = (key % this.grid.cols) * s; const cy = Math.floor(key / this.grid.cols) * s;
+          ctx.globalAlpha = this.alpha * 0.9 * fade;
+          ctx.beginPath(); ctx.arc(cx, cy, s * 0.34, 0, 6.2832); ctx.fill();
+        }
+        if (fading && fade === 0) this.clearPaint();
+      }
       // particles
-      const R = s * 7; const R2 = R * R;
+      const R = this.painting ? 0 : s * 7; const R2 = R * R;
       const p = this.p;
       for (const q of this.particles) {
         const e = Math.min(1, Math.max(0, (p - q.d) / (1 - q.d)));
@@ -177,7 +207,8 @@
         // wave sweep + flicker
         const wave = Math.sin(q.tx * 0.012 - t * 2.2) * 0.5 + 0.5;
         if (q.flick > 0) q.flick -= dt; else if (Math.random() < 0.0008) q.flick = 120 + Math.random() * 200;
-        const on = q.flick <= 0;
+        const off = q.off && (!fading || Math.random() > (1 - fade) * 0.35 + 0.1 ? true : (q.off = 0, false));
+        const on = q.flick <= 0 && !off;
         const r = s * (0.22 + 0.16 * wave) * (0.4 + 0.6 * ee);
         ctx.fillStyle = on ? YELLOW : 'rgba(242,241,236,0.18)';
         ctx.globalAlpha = this.alpha * (0.55 + 0.45 * wave);
@@ -207,6 +238,14 @@
   const ctaCanvas = $('#byteStream');
   const stream = ctaCanvas ? new ByteField(ctaCanvas, { mode: 'stream' }) : null;
   if (field) {
+    const hero = $('#hero');
+    const pos = (e) => { const r = heroCanvas.getBoundingClientRect(); const t = e.touches ? e.touches[0] : e; return [t.clientX - r.left, t.clientY - r.top]; };
+    const down = (e) => { if (e.target.closest('a, button')) return; if (field.p < 0.98) return; field.painting = true; hero.classList.add('is-painting'); field.brush(...pos(e)); };
+    const move = (e) => { if (!field.painting) return; field.brush(...pos(e)); if (e.touches) e.preventDefault(); };
+    const up = () => { field.painting = false; hero.classList.remove('is-painting'); };
+    hero.addEventListener('mousedown', down); window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
+    hero.addEventListener('touchstart', down, { passive: true }); hero.addEventListener('touchmove', move, { passive: false }); window.addEventListener('touchend', up);
+    window.addEventListener('keydown', (e) => { if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey && !menuOpen) field.clearPaint(); });
     ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: (st) => (st.isActive ? field.start() : field.stop()) });
     if (!reduce) gsap.to(field, { alpha: 0.12, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
   }
@@ -339,9 +378,25 @@
 
   /* ---------- Nav ---------- */
   const nav = $('#nav'); let lastY = 0;
-  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => { const y = self.scroll(); nav.classList.toggle('is-scrolled', y > 20); if (y > 120 && y > lastY + 4 && !menuOpen) nav.classList.add('is-hidden'); else if (y < lastY - 4 || y < 120) nav.classList.remove('is-hidden'); lastY = y; } });
+  const byteDots = $$('#navByte i'); let lastByte = -1;
+  const setByte = (progress) => {
+    const v = Math.round(Math.min(1, Math.max(0, progress)) * 255);
+    if (v === lastByte) return; lastByte = v;
+    byteDots.forEach((d, i) => d.classList.toggle('on', (v >> (7 - i)) & 1));
+    $('#navByte').title = `Page progress: 0x${v.toString(16).padStart(2, '0').toUpperCase()} of 0xFF`;
+  };
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => { const y = self.scroll(); setByte(self.progress); nav.classList.toggle('is-scrolled', y > 20); if (y > 120 && y > lastY + 4 && !menuOpen) nav.classList.add('is-hidden'); else if (y < lastY - 4 || y < 120) nav.classList.remove('is-hidden'); lastY = y; } });
   // light sections: flip the nav palette while they sit under it
   ScrollTrigger.create({ trigger: '#stack', endTrigger: '#faq', start: 'top 34px', end: 'bottom 34px', onToggle: (st) => nav.classList.toggle('is-light', st.isActive) });
+
+  /* ---------- Tab title: runs as a ticker while the tab is hidden ---------- */
+  (() => {
+    const base = document.title; let timer = null; let text = 'RUNBYTE \u258e RUNBYTE \u258e ';
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { timer = setInterval(() => { text = text.slice(1) + text[0]; document.title = text.slice(0, 16); }, 220); }
+      else { clearInterval(timer); document.title = base; }
+    });
+  })();
 
   /* ---------- Menu ---------- */
   const menu = $('#menu'); const burger = $('#burger'); let menuOpen = false;
@@ -405,7 +460,7 @@
     const pct = $('#loaderPct'); const status = $('#loaderStatus');
     const words = ['BOOT', 'LOAD FONTS', 'SAMPLE GRID', 'MOUNT', 'RUN'];
     const obj = { v: 0 }; const dur = seen ? 1.0 : 2.0;
-    gsap.to(obj, { v: 100, duration: dur, ease: 'power2.inOut', onUpdate: () => { pct.textContent = String(Math.round(obj.v)).padStart(3, '0'); status.textContent = words[Math.min(words.length - 1, Math.floor(obj.v / 100 * words.length))]; } });
+    gsap.to(obj, { v: 100, duration: dur, ease: 'power2.inOut', onUpdate: () => { pct.textContent = '0x' + Math.round(obj.v / 100 * 255).toString(16).padStart(2, '0').toUpperCase(); status.textContent = words[Math.min(words.length - 1, Math.floor(obj.v / 100 * words.length))]; } });
     let flapDone = false; let fontsDone = false; let started = false;
     const finish = () => {
       if (started || !flapDone || !fontsDone) return; started = true;
