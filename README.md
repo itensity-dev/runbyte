@@ -27,7 +27,9 @@ assets/js/vendor/     — gsap, ScrollTrigger, SplitText, CustomEase, lenis
 assets/fonts/         — Bricolage Grotesque, Instrument Serif, JetBrains Mono (woff2)
 assets/img/og.jpg     — превью для соцсетей (скриншот hero)
 docs/DESIGN.md        — дизайн-система и правила «не-AI стиля»
+src/worker.js         — воркер: /api/contact для формы, остальное статика
 _headers              — заголовки для Cloudflare (кэш, безопасность)
+robots.txt, sitemap.xml, 404.html
 wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
 .assetsignore         — что не выгружать на Workers
 ```
@@ -44,7 +46,8 @@ wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
 | `tex-plastic-tile.webp` | фон карточек стадий и панелей услуг (бесшовная версия `tex-plastic.webp`) |
 | `tex-splitflap.webp` | фон CTA |
 | `og.jpg` | превью ссылки в соцсетях |
-| `wallpaper-phone.webp`, `banner-linkedin.webp`, `avatar.webp` | для соцсетей, на сайте не используются |
+| `avatar.webp` | apple-touch-icon и логотип в JSON-LD |
+| `wallpaper-phone.webp`, `banner-linkedin.webp` | для соцсетей, на сайте не используются |
 
 Промты для генерации — в `docs/IMAGE-PROMPTS.md`.
 
@@ -87,10 +90,37 @@ npx wrangler deploy     # выведет URL вида https://runbyte.<акка�
 
 Через несколько минут сайт открывается по https://runbyte.eu. Адрес `*.workers.dev` можно оставить или отключить в **Settings** → **Domains & Routes**.
 
+## Контактная форма
+
+Форма на сайте трёхшаговая и отправляет JSON на `/api/contact`. Этот путь обрабатывает воркер `src/worker.js`, всё остальное он отдаёт как статику.
+
+Куда уходят заявки, задаётся секретами воркера (Cloudflare → runbyte → **Settings** → **Variables and Secrets**):
+
+| Переменная | Что делает |
+|---|---|
+| `RESEND_API_KEY` | ключ [Resend](https://resend.com): письмо уходит на `info@runbyte.eu`, reply-to = адрес клиента |
+| `CONTACT_TO` | куда слать (по умолчанию `info@runbyte.eu`) |
+| `CONTACT_FROM` | от кого (по умолчанию `Runbyte <noreply@runbyte.eu>`, домен нужно подтвердить в Resend) |
+| `CONTACT_WEBHOOK_URL` | альтернатива почте: POST с JSON заявки на любой URL (Slack, Make, n8n, Telegram-бот) |
+
+Если ничего не задано, воркер отвечает 501, и форма открывает почтовый клиент с уже заполненным письмом, так что заявка всё равно не теряется.
+
+Настройка Resend за пять минут: зарегистрироваться, добавить домен `runbyte.eu` (две DNS-записи, Cloudflare покажет как), создать API-ключ, вставить его в секрет `RESEND_API_KEY`.
+
+Защита: honeypot-поле, серверная валидация, лимит длины полей. Заявки нигде не хранятся, только письмо.
+
+## SEO
+
+- Title, description, keywords, canonical, robots, Open Graph и Twitter-карточки в `<head>`.
+- JSON-LD: Organization, WebSite, ProfessionalService с каталогом услуг, FAQPage.
+- `robots.txt`, `sitemap.xml`, страница `404.html`.
+- Один `h1`, семантические `section`/`article`/`h2`, alt у картинок, шрифты и картинки локальные.
+- Комментариев в исходниках страницы нет.
+
+После подключения домена: добавить сайт в Google Search Console и отправить `https://runbyte.eu/sitemap.xml`.
+
 ## Что поменять перед публикацией
 
-- `index.html`: ссылки на соцсети (`href="#"`), «EST. 2017» в hero.
-- Цены в FAQ (€25k–€250k, discovery от €4k).
-
-Контакты уже реальные: `info@runbyte.eu`, Vilnius, время EET.
+- Ссылки Privacy и Imprint в футере (`href="#"`): нужны реальные страницы.
+- Секрет `RESEND_API_KEY` для формы (см. выше).
 - «EST. 2017» в углу hero.

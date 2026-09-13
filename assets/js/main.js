@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Runbyte v2 — interactions
-   GSAP 3.13 (ScrollTrigger, SplitText, ScrambleText, CustomEase) + Lenis
-   ========================================================================== */
 (() => {
   'use strict';
 
@@ -17,7 +13,6 @@
   CustomEase.create('inOut', '0.76, 0, 0.24, 1');
   gsap.defaults({ ease: 'out', duration: 1 });
 
-  /* ---------- Smooth scroll ---------- */
   let lenis = null;
   if (!reduce) {
     lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
@@ -40,22 +35,8 @@
   });
   $('#toTop')?.addEventListener('click', () => scrollTo(0));
 
-  /* ---------- Clock ---------- */
-  const tick = () => {
-    const now = new Date();
-    const str = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Vilnius' }).format(now);
-    const zone = (new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Vilnius', timeZoneName: 'short' }).formatToParts(now).find((p) => p.type === 'timeZoneName') || {}).value || 'EET';
-    ['#localTime', '#menuTime'].forEach((s) => { const el = $(s); if (el) el.textContent = `VNO ${str}`; });
-    const f = $('#footerTime'); if (f) f.textContent = `${str} ${zone}`;
-  };
-  tick(); setInterval(tick, 15000);
-
-  /* ---------- Marquee ---------- */
   $$('[data-marquee]').forEach((t) => { t.innerHTML += t.innerHTML; });
 
-  /* =========================================================================
-     Split-flap board
-     ========================================================================= */
   const ALPHA = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   function createFlapBoard(el, word) {
     el.classList.add('flap-board');
@@ -97,9 +78,6 @@
     return { run, settle, el };
   }
 
-  /* =========================================================================
-     ByteField — flip-dot particle field (hero) / byte stream (cta)
-     ========================================================================= */
   class ByteField {
     constructor(canvas, opts) {
       this.c = canvas; this.ctx = canvas.getContext('2d');
@@ -115,7 +93,6 @@
       }
       this.resize();
     }
-    /* Paint: flip dots under the brush. Word dots go dark, empty cells light up. */
     brush(x, y) {
       if (this.o.mode !== 'word') return;
       const s = this.s; const r = s * 1.6; const now = performance.now();
@@ -147,7 +124,6 @@
         this.cols = Array.from({ length: cols }, (_, i) => ({ x: i * s, y: Math.random() * rows, speed: 2 + Math.random() * 6, len: 4 + Math.random() * 14, on: Math.random() > 0.55 }));
         return;
       }
-      // sample the wordmark
       const off = document.createElement('canvas'); off.width = cols; off.height = rows;
       const octx = off.getContext('2d');
       octx.fillStyle = '#fff'; octx.textBaseline = 'middle'; octx.textAlign = 'center';
@@ -180,10 +156,8 @@
       const ctx = this.ctx; ctx.clearRect(0, 0, this.w, this.h);
       if (this.o.mode === 'stream') return this.drawStream();
       const s = this.s; const t = this.time;
-      // background dot grid
       ctx.fillStyle = 'rgba(242,241,236,0.06)';
       for (let y = 0; y < this.grid.rows; y++) for (let x = 0; x < this.grid.cols; x++) ctx.fillRect(x * s - 0.75, y * s - 0.75, 1.5, 1.5);
-      // painted cells (user drawing) fade out a few seconds after the last stroke
       const now = performance.now();
       const fading = this.restoreAt && now > this.restoreAt;
       const fade = fading ? Math.max(0, 1 - (now - this.restoreAt) / 900) : 1;
@@ -196,7 +170,6 @@
         }
         if (fading && fade === 0) this.clearPaint();
       }
-      // particles
       const R = this.painting ? 0 : s * 7; const R2 = R * R;
       const p = this.p;
       for (const q of this.particles) {
@@ -206,7 +179,6 @@
         const dx = x - this.mouse.x; const dy = y - this.mouse.y; const d2 = dx * dx + dy * dy;
         if (d2 < R2) { const d = Math.sqrt(d2) || 1; const f = (1 - d / R) * s * 3; x += dx / d * f; y += dy / d * f; }
         q.x += (x - q.x) * 0.18; q.y += (y - q.y) * 0.18;
-        // wave sweep + flicker
         const wave = Math.sin(q.tx * 0.012 - t * 2.2) * 0.5 + 0.5;
         if (q.flick > 0) q.flick -= dt; else if (Math.random() < 0.0008) q.flick = 120 + Math.random() * 200;
         const off = q.off && (!fading || Math.random() > (1 - fade) * 0.35 + 0.1 ? true : (q.off = 0, false));
@@ -240,14 +212,6 @@
   const ctaCanvas = $('#byteStream');
   const stream = ctaCanvas ? new ByteField(ctaCanvas, { mode: 'stream' }) : null;
   if (field) {
-    const hero = $('#hero');
-    const pos = (e) => { const r = heroCanvas.getBoundingClientRect(); const t = e.touches ? e.touches[0] : e; return [t.clientX - r.left, t.clientY - r.top]; };
-    const down = (e) => { if (e.target.closest('a, button')) return; if (field.p < 0.98) return; field.painting = true; hero.classList.add('is-painting'); field.brush(...pos(e)); };
-    const move = (e) => { if (!field.painting) return; field.brush(...pos(e)); if (e.touches) e.preventDefault(); };
-    const up = () => { field.painting = false; hero.classList.remove('is-painting'); };
-    hero.addEventListener('mousedown', down); window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
-    hero.addEventListener('touchstart', down, { passive: true }); hero.addEventListener('touchmove', move, { passive: false }); window.addEventListener('touchend', up);
-    window.addEventListener('keydown', (e) => { if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey && !menuOpen) field.clearPaint(); });
     ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: (st) => (st.isActive ? field.start() : field.stop()) });
     if (!reduce) gsap.to(field, { alpha: 0.12, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
   }
@@ -256,9 +220,6 @@
     if (reduce) { stream.frame(0, 16); }
   }
 
-  /* =========================================================================
-     Text effects
-     ========================================================================= */
   const splits = new Map();
   $$('[data-split]').forEach((el) => {
     const inHero = el.closest('.hero') !== null;
@@ -294,7 +255,6 @@
     ScrollTrigger.batch('[data-reveal]:not(.hero [data-reveal])', { start: 'top 88%', once: true, onEnter: (b) => b.forEach((el, i) => setTimeout(() => el.classList.add('is-in'), i * 80)) });
   } else $$('[data-reveal]').forEach((el) => el.classList.add('is-in'));
 
-  // Scramble on hover
   if (fine && !reduce) {
     $$('[data-scramble]').forEach((el) => {
       const text = el.dataset.scramble || el.textContent;
@@ -307,9 +267,6 @@
     });
   }
 
-  /* =========================================================================
-     Services: sticky index + SVG visuals
-     ========================================================================= */
   const indexItems = $$('#serviceIndex li');
   $$('.panel').forEach((panel) => {
     const i = +panel.dataset.index;
@@ -319,7 +276,6 @@
     });
   });
 
-  // grid viz
   const gridG = $('.viz--grid .viz__grid');
   if (gridG) {
     let s = '';
@@ -327,12 +283,10 @@
     for (let y = 0; y <= 240; y += 20) s += `<line x1="0" y1="${y}" x2="400" y2="${y}"/>`;
     gridG.innerHTML = s;
   }
-  // wave viz
   const wave1 = $('.viz--wave .viz__wave:not(.viz__wave--2)'); const wave2 = $('.viz--wave .viz__wave--2');
   const wavePath = (t, amp, f, ph) => { let d = ''; for (let x = 0; x <= 400; x += 4) { const y = 120 + Math.sin(x * f + t + ph) * amp * Math.sin(x * 0.008 + t * 0.3); d += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1); } return d; };
   let waveT = 0; const waveTick = (_, dt) => { waveT += dt / 1000; wave1.setAttribute('d', wavePath(waveT * 2, 40, 0.05, 0)); wave2.setAttribute('d', wavePath(waveT * 1.4, 26, 0.035, 1.3)); };
   if (wave1) { if (reduce) waveTick(0, 16); else ScrollTrigger.create({ trigger: '#svc-ai', start: 'top bottom', end: 'bottom top', onToggle: (st) => (st.isActive ? gsap.ticker.add(waveTick) : gsap.ticker.remove(waveTick)) }); }
-  // nodes viz
   const nodesG = $('.viz--nodes .viz__nodes'); const linksG = $('.viz--nodes .viz__links');
   if (nodesG) {
     const pts = [[200, 120, 1], [90, 60, 0], [310, 60, 0], [70, 170, 0], [330, 180, 0], [200, 30, 0], [200, 210, 0], [140, 120, 0], [260, 120, 0]];
@@ -340,7 +294,6 @@
     nodesG.innerHTML = pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="${p[2] ? 9 : 6}" class="${p[2] ? 'hub' : ''}"/>`).join('');
     if (!reduce) gsap.to('.viz--nodes .viz__nodes circle:not(.hub)', { attr: { r: 4 }, duration: 1.2, stagger: { each: 0.15, repeat: -1, yoyo: true }, ease: 'sine.inOut' });
   }
-  // signal + cursor viz
   if (!reduce) {
     gsap.fromTo('.viz__signal circle', { scale: 0.6, opacity: 0.5, transformOrigin: '300px 120px' }, { scale: 1.15, opacity: 0, duration: 2.4, stagger: 0.8, repeat: -1, ease: 'sine.out' });
     gsap.timeline({ repeat: -1, repeatDelay: 1 })
@@ -351,9 +304,6 @@
       .to('.viz__accent', { attr: { width: 60 }, duration: 0.5 }, '<');
   }
 
-  /* =========================================================================
-     Process: horizontal runtime
-     ========================================================================= */
   const mm = gsap.matchMedia();
   const stages = $$('.stage');
   const stageNum = $('#stageNum'); const stageName = $('#stageName');
@@ -377,7 +327,6 @@
     });
   });
 
-  /* ---------- FAQ ---------- */
   $$('.faq__item').forEach((d) => {
     const summary = $('summary', d); const body = $('.faq__body', d);
     summary.addEventListener('click', (e) => {
@@ -388,7 +337,6 @@
     });
   });
 
-  /* ---------- Nav ---------- */
   const nav = $('#nav'); let lastY = 0;
   const byteDots = $$('#navByte i'); let lastByte = -1;
   const setByte = (progress) => {
@@ -398,10 +346,8 @@
     $('#navByte').title = `Page progress: 0x${v.toString(16).padStart(2, '0').toUpperCase()} of 0xFF`;
   };
   ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => { const y = self.scroll(); setByte(self.progress); nav.classList.toggle('is-scrolled', y > 20); if (y > 120 && y > lastY + 4 && !menuOpen) nav.classList.add('is-hidden'); else if (y < lastY - 4 || y < 120) nav.classList.remove('is-hidden'); lastY = y; } });
-  // light sections: flip the nav palette while they sit under it
   ScrollTrigger.create({ trigger: '#stack', endTrigger: '#faq', start: 'top 34px', end: 'bottom 34px', onToggle: (st) => nav.classList.toggle('is-light', st.isActive) });
 
-  /* ---------- Tab title: runs as a ticker while the tab is hidden ---------- */
   (() => {
     const base = document.title; let timer = null; let text = 'RUNBYTE \u258e RUNBYTE \u258e ';
     document.addEventListener('visibilitychange', () => {
@@ -410,7 +356,6 @@
     });
   })();
 
-  /* ---------- Menu ---------- */
   const menu = $('#menu'); const burger = $('#burger'); let menuOpen = false;
   const menuLinks = $$('.menu__links a', menu);
   const openMenu = () => {
@@ -428,7 +373,6 @@
   burger.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
-  /* ---------- Cursor ---------- */
   const cursor = $('#cursor');
   if (cursor && fine && !reduce) {
     const cx = gsap.quickTo(cursor, 'x', { duration: 0.15, ease: 'power3' }); const cy = gsap.quickTo(cursor, 'y', { duration: 0.15, ease: 'power3' });
@@ -439,9 +383,64 @@
     document.addEventListener('mouseout', (e) => { if (e.target.closest(hov)) cursor.classList.remove('is-link'); });
   }
 
-  /* =========================================================================
-     Loader + intro
-     ========================================================================= */
+  (() => {
+    const form = $('#contactForm'); if (!form) return;
+    const steps = $$('.form__step', form); const names = ['What you need', 'About the project', 'Your contact'];
+    const back = $('#formBack'); const next = $('#formNext'); const send = $('#formSend');
+    const stepEl = $('#formStep'); const stepName = $('#formStepName'); const bar = $('#formBar');
+    const globalErr = $('#formGlobalError'); const done = $('#formDone');
+    let i = 0;
+    const showErr = (key, on) => { const el = form.querySelector(`[data-error-for="${key}"]`); if (el) el.classList.toggle('is-visible', on); };
+    const validate = () => {
+      if (i === 0) { const ok = form.querySelectorAll('input[name="need"]:checked').length > 0; showErr('need', !ok); return ok; }
+      if (i === 1) { const ok = $('#about').value.trim().length >= 10; showErr('about', !ok); return ok; }
+      if (i === 2) { const ok = $('#name').value.trim().length > 1 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('#email').value.trim()); showErr('email', !ok); return ok; }
+      return true;
+    };
+    const render = () => {
+      steps.forEach((s, k) => s.classList.toggle('is-active', k === i));
+      stepEl.textContent = String(i + 1).padStart(2, '0'); stepName.textContent = names[i];
+      bar.style.transform = `scaleX(${(i + 1) / steps.length})`;
+      back.hidden = i === 0; next.hidden = i === steps.length - 1; send.hidden = i !== steps.length - 1;
+      const first = steps[i].querySelector('input:not([type="checkbox"]):not([type="radio"]), textarea');
+      if (first && fine) first.focus({ preventScroll: true });
+    };
+    next.addEventListener('click', () => { if (!validate()) return; i = Math.min(steps.length - 1, i + 1); render(); });
+    back.addEventListener('click', () => { i = Math.max(0, i - 1); render(); });
+    form.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && i < steps.length - 1) { e.preventDefault(); next.click(); } });
+    const payload = () => ({
+      need: $$('input[name="need"]:checked', form).map((x) => x.value),
+      about: $('#about').value.trim(),
+      budget: (form.querySelector('input[name="budget"]:checked') || {}).value || 'Not specified',
+      timeline: (form.querySelector('input[name="timeline"]:checked') || {}).value || 'Not specified',
+      name: $('#name').value.trim(), company: $('#company').value.trim(), email: $('#email').value.trim(),
+      website: form.querySelector('input[name="website"]').value, page: location.href
+    });
+    const mailtoFallback = (d) => {
+      const body = `Need: ${d.need.join(', ')}\nBudget: ${d.budget}\nTimeline: ${d.timeline}\n\n${d.about}\n\n${d.name}${d.company ? ' · ' + d.company : ''}\n${d.email}`;
+      location.href = `mailto:info@runbyte.eu?subject=${encodeURIComponent('Project request from ' + d.name)}&body=${encodeURIComponent(body)}`;
+    };
+    const finish = (id) => {
+      steps.forEach((s) => s.classList.remove('is-active')); $('.form__nav', form).hidden = true; $('.form__head', form).hidden = true; $('.form__bar', form).hidden = true;
+      done.hidden = false; $('#doneMeta').textContent = id ? `Ref ${id}` : '';
+      const b = createFlapBoard($('#doneFlap'), 'SENT'); reduce ? b.settle() : b.run(null, { interval: 45, stagger: 90 });
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); if (!validate()) return;
+      const d = payload(); globalErr.hidden = true; form.classList.add('is-sending');
+      try {
+        const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+        if (r.ok) { const j = await r.json().catch(() => ({})); finish(j.id); return; }
+        if (r.status === 501) { mailtoFallback(d); finish(); return; }
+        throw new Error('HTTP ' + r.status);
+      } catch (err) {
+        form.classList.remove('is-sending');
+        globalErr.hidden = false; globalErr.textContent = "Couldn't send. Email us directly at info@runbyte.eu — or try again.";
+      }
+    });
+    render();
+  })();
+
   const loader = $('#loader');
   const board = $('#flapBoard') ? createFlapBoard($('#flapBoard'), $('#flapBoard').dataset.word) : null;
   const footerBoard = $('#footerFlap') ? createFlapBoard($('#footerFlap'), $('#footerFlap').dataset.word) : null;

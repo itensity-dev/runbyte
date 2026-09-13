@@ -3,16 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Runbyte — Software that runs.</title>
-  <meta name="description" content="Runbyte is a software studio. We design and engineer web platforms, mobile apps, AI systems and the cloud underneath — then keep them running.">
+  <title>Runbyte — Software Studio | Web Platforms, Mobile Apps, AI &amp; Cloud</title>
+  <meta name="description" content="Runbyte is a software studio. We design and engineer web platforms, mobile apps, AI systems and cloud infrastructure — and keep them running after launch. Fixed scope, fixed price, you own the code.">
+  <meta name="keywords" content="software studio, software development company, web platform development, mobile app development, AI integration, LLM development, cloud DevOps, product design, custom software Europe">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Runbyte">
   <meta name="theme-color" content="#0a0a0b">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://runbyte.eu/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/avatar.webp">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Runbyte">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://runbyte.eu/">
   <meta property="og:title" content="Runbyte — Software that runs.">
-  <meta property="og:description" content="Web platforms, mobile apps, AI systems and cloud infrastructure. Designed and engineered to keep running.">
+  <meta property="og:description" content="Web platforms, mobile apps, AI systems and cloud infrastructure. Designed, engineered and kept running by one studio.">
   <meta property="og:image" content="https://runbyte.eu/assets/img/og.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="945">
+  <meta property="og:image:alt" content="RUNBYTE spelled in yellow flip-dots on a black board">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Runbyte — Software that runs.">
+  <meta name="twitter:description" content="Web platforms, mobile apps, AI systems and cloud infrastructure. Designed, engineered and kept running by one studio.">
+  <meta name="twitter:image" content="https://runbyte.eu/assets/img/og.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://runbyte.eu/#org",
+        "name": "Runbyte",
+        "url": "https://runbyte.eu/",
+        "logo": "https://runbyte.eu/assets/img/avatar.webp",
+        "email": "info@runbyte.eu",
+        "description": "Software studio: web platforms, mobile apps, AI systems and cloud infrastructure.",
+        "contactPoint": { "@type": "ContactPoint", "email": "info@runbyte.eu", "contactType": "sales", "availableLanguage": ["en"] }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://runbyte.eu/#site",
+        "url": "https://runbyte.eu/",
+        "name": "Runbyte",
+        "publisher": { "@id": "https://runbyte.eu/#org" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://runbyte.eu/#service",
+        "name": "Runbyte",
+        "url": "https://runbyte.eu/",
+        "image": "https://runbyte.eu/assets/img/og.jpg",
+        "email": "info@runbyte.eu",
+        "priceRange": "$$$",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web platform development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile app development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI and automation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud and DevOps" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product design" } }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How fast can you start?", "acceptedAnswer": { "@type": "Answer", "text": "Usually within two to three weeks of the first call. If the scope is already clear, discovery can start sooner." } },
+          { "@type": "Question", "name": "Do you take over existing codebases?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A large part of our work is stabilising and extending systems built by someone else. We start with a technical audit." } },
+          { "@type": "Question", "name": "Do you work with clients abroad?", "acceptedAnswer": { "@type": "Answer", "text": "Most of our clients are. We keep overlapping working hours with your team and run everything in English." } },
+          { "@type": "Question", "name": "How do we communicate during the project?", "acceptedAnswer": { "@type": "Answer", "text": "A shared Slack channel, a weekly demo, and a staging link that is always up to date." } },
+          { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do, from the first commit. Everything lives in your repositories and your cloud accounts." } }
+        ]
+      }
+    ]
+  }
+  </script>
   <script>document.documentElement.classList.add("js")</script>
   <link rel="preload" href="assets/fonts/archivo-normal-100-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-mono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -21,7 +90,6 @@
 </head>
 <body class="is-loading">
 
-  <!-- ============ LOADER: split-flap board ============ -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__board" id="flapBoard" data-word="RUNBYTE"></div>
     <div class="loader__status mono">
@@ -30,10 +98,8 @@
     </div>
   </div>
 
-  <!-- ============ CURSOR ============ -->
   <div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
 
-  <!-- ============ NAV ============ -->
   <header class="nav is-pre" id="nav">
     <a href="#top" class="nav__logo" data-scroll aria-label="Runbyte home">
       <svg class="nav__dots" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
@@ -52,13 +118,11 @@
     </nav>
     <div class="nav__right">
       <span class="nav__byte" id="navByte" title="Page progress, one byte" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-      <span class="nav__time mono" id="localTime">--:--</span>
       <a href="#contact" class="btn btn--sm" data-scroll><span>Start a project</span></a>
       <button class="nav__burger mono" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span>Menu</span></button>
     </div>
   </header>
 
-  <!-- ============ MOBILE MENU ============ -->
   <div class="menu" id="menu" aria-hidden="true">
     <nav class="menu__links" aria-label="Mobile">
       <a href="#services" data-scroll><span class="mono">01</span>Services</a>
@@ -70,21 +134,18 @@
     </nav>
     <div class="menu__foot mono">
       <a href="mailto:info@runbyte.eu">info@runbyte.eu</a>
-      <span id="menuTime">--:--</span>
     </div>
   </div>
 
   <main id="top">
 
-    <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="hero__tex" aria-hidden="true"></div>
       <canvas class="hero__canvas" id="byteField" aria-hidden="true"></canvas>
       <div class="hero__frame" aria-hidden="true">
         <span class="mono hero__corner hero__corner--tl">RUNBYTE / SOFTWARE STUDIO</span>
-        <span class="mono hero__corner hero__corner--tr">EST. 2017</span>
         <span class="mono hero__corner hero__corner--bl"><span class="hero__live"></span>ALL SYSTEMS RUNNING</span>
-        <span class="mono hero__corner hero__corner--br"><span class="hero__hint">Drag to flip dots · R resets</span><span>Scroll ↓</span></span>
+        <span class="mono hero__corner hero__corner--br">Scroll ↓</span>
       </div>
       <div class="hero__content">
         <h1 class="hero__title" data-split="lines">
@@ -98,7 +159,6 @@
       </div>
     </section>
 
-    <!-- ============ TICKER ============ -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track mono" data-marquee>
         <span>Web platforms</span><b>01</b>
@@ -110,21 +170,18 @@
       </div>
     </div>
 
-    <!-- ============ STATEMENT ============ -->
     <section class="statement">
       <div class="statement__meta mono"><span>(01)</span><span>Statement</span></div>
       <p class="statement__text" data-fill>Runbyte is a software studio. We design and build web platforms, mobile apps and AI systems for companies that can't afford downtime — then we stay to keep them fast, monitored and boring in the best possible way.</p>
     </section>
 
-    <!-- ============ POSTER ============ -->
     <figure class="poster" aria-label="Runbyte flip-dot board">
       <div class="poster__media" data-clip>
-        <img src="assets/img/wallpaper-desktop.webp" alt="" width="1672" height="941" data-parallax="0.16" loading="lazy">
+        <img src="assets/img/wallpaper-desktop.webp" alt="RUNBYTE spelled in yellow flip-dots on a large black board in an industrial hall" width="1672" height="941" data-parallax="0.16" loading="lazy">
       </div>
       <figcaption class="mono"><span>Fig. 01 — The board, Hall B</span><span>3 456 dots · 1 byte each</span></figcaption>
     </figure>
 
-    <!-- ============ SERVICES: sticky index ============ -->
     <section class="services" id="services">
       <div class="services__head">
         <div class="mono services__meta"><span>(02)</span><span>Services</span></div>
@@ -251,7 +308,6 @@
       </div>
     </section>
 
-    <!-- ============ PROCESS: runtime ============ -->
     <section class="process" id="process">
       <div class="process__head">
         <div class="mono process__meta"><span>(03)</span><span>Process</span></div>
@@ -291,7 +347,6 @@
       </div>
     </section>
 
-    <!-- ============ PRINCIPLES ============ -->
     <section class="principles" id="principles">
       <div class="principles__head">
         <div class="mono principles__meta"><span>(04)</span><span>Principles</span></div>
@@ -321,7 +376,6 @@
       </div>
     </section>
 
-    <!-- ============ STACK: datasheet (light) ============ -->
     <section class="stack" id="stack">
       <div class="stack__head">
         <div class="mono stack__meta"><span>(05)</span><span>Stack</span><span class="stack__rev">REV 2026.09</span></div>
@@ -339,7 +393,6 @@
       </table>
     </section>
 
-    <!-- ============ FAQ (light) ============ -->
     <section class="faq" id="faq">
       <div class="faq__head">
         <div class="mono faq__meta"><span>(06)</span><span>FAQ</span></div>
@@ -347,16 +400,16 @@
       </div>
       <div class="faq__list">
         <details class="faq__item">
-          <summary><span>How much does a project cost?</span><i aria-hidden="true"></i></summary>
-          <div class="faq__body"><p>Most engagements land between €25k and €250k. A paid discovery phase (from €4k) ends with a fixed price and a date. We don't do open-ended hourly work on new builds.</p></div>
+          <summary><span>How fast can you start?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>Usually within two to three weeks of the first call. If the scope is already clear, discovery can start sooner. We never take on more than we can staff properly.</p></div>
         </details>
         <details class="faq__item">
           <summary><span>Do you take over existing codebases?</span><i aria-hidden="true"></i></summary>
           <div class="faq__body"><p>Yes. A large part of our work is stabilising and extending systems built by someone else. We start with a technical audit so you know what you have before we touch it.</p></div>
         </details>
         <details class="faq__item">
-          <summary><span>Which time zones do you cover?</span><i aria-hidden="true"></i></summary>
-          <div class="faq__body"><p>Core hours are 8:00–20:00 EET (Vilnius), and we've run projects with clients in New York, Dubai and Singapore without anyone waking up at 4am.</p></div>
+          <summary><span>Do you work with clients abroad?</span><i aria-hidden="true"></i></summary>
+          <div class="faq__body"><p>Most of our clients are. We keep overlapping working hours with your team, run everything in English, and have shipped projects for companies in Europe, the US and the Middle East.</p></div>
         </details>
         <details class="faq__item">
           <summary><span>How do we communicate during the project?</span><i aria-hidden="true"></i></summary>
@@ -369,31 +422,102 @@
       </div>
     </section>
 
-    <!-- ============ CTA ============ -->
     <section class="cta" id="contact">
       <canvas class="cta__canvas" id="byteStream" aria-hidden="true"></canvas>
       <div class="cta__inner">
-        <div class="mono cta__meta"><span>(07)</span><span>Contact</span></div>
-        <h2 class="cta__title" data-split="lines">Let's run<br><span class="accent">yours.</span></h2>
-        <div class="cta__row">
-          <a href="mailto:info@runbyte.eu" class="cta__mail" data-scramble="info@runbyte.eu">info@runbyte.eu</a>
-          <div class="cta__side">
-            <p>Send a few lines about what you're building. We reply within one business day, usually with a couple of questions and a time to talk.</p>
-            <a href="mailto:info@runbyte.eu" class="btn"><span>Book a call</span></a>
-          </div>
+        <div class="cta__intro">
+          <div class="mono cta__meta"><span>(07)</span><span>Contact</span></div>
+          <h2 class="cta__title" data-split="lines">Start<br>a <span class="accent">project.</span></h2>
+          <p class="cta__text">Three short steps. We reply within one business day, usually with a couple of questions and a time to talk.</p>
+          <a href="mailto:info@runbyte.eu" class="cta__mail">info@runbyte.eu</a>
         </div>
+
+        <form class="form" id="contactForm" novalidate>
+          <div class="form__head mono">
+            <span>Step <b id="formStep">01</b> / 03</span>
+            <span id="formStepName">What you need</span>
+          </div>
+          <div class="form__bar"><span id="formBar"></span></div>
+
+          <fieldset class="form__step is-active" data-step="1">
+            <legend class="form__q">What do you need?</legend>
+            <p class="form__hint mono">Pick everything that applies</p>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="need" value="Web platform"><span>Web platform</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="Mobile app"><span>Mobile app</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="AI &amp; automation"><span>AI &amp; automation</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="Cloud &amp; DevOps"><span>Cloud &amp; DevOps</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="Product design"><span>Product design</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+            <p class="form__error mono" data-error-for="need">Pick at least one.</p>
+          </fieldset>
+
+          <fieldset class="form__step" data-step="2">
+            <legend class="form__q">Tell us about it.</legend>
+            <label class="field">
+              <span class="mono">Project in a few lines</span>
+              <textarea name="about" id="about" rows="4" placeholder="What are you building, for whom, and what exists today?" required></textarea>
+            </label>
+            <div class="form__row">
+              <div class="field">
+                <span class="mono">Budget</span>
+                <div class="radios">
+                  <label class="radio"><input type="radio" name="budget" value="Under €25k"><span>&lt; €25k</span></label>
+                  <label class="radio"><input type="radio" name="budget" value="€25k – €75k"><span>€25–75k</span></label>
+                  <label class="radio"><input type="radio" name="budget" value="€75k – €250k"><span>€75–250k</span></label>
+                  <label class="radio"><input type="radio" name="budget" value="€250k+"><span>€250k+</span></label>
+                  <label class="radio"><input type="radio" name="budget" value="Not sure"><span>Not sure</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <span class="mono">Timeline</span>
+                <div class="radios">
+                  <label class="radio"><input type="radio" name="timeline" value="As soon as possible"><span>ASAP</span></label>
+                  <label class="radio"><input type="radio" name="timeline" value="1–3 months"><span>1–3 months</span></label>
+                  <label class="radio"><input type="radio" name="timeline" value="Later this year"><span>Later</span></label>
+                </div>
+              </div>
+            </div>
+            <p class="form__error mono" data-error-for="about">A couple of sentences is enough.</p>
+          </fieldset>
+
+          <fieldset class="form__step" data-step="3">
+            <legend class="form__q">Where do we reply?</legend>
+            <div class="form__row">
+              <label class="field"><span class="mono">Name</span><input type="text" name="name" id="name" autocomplete="name" required></label>
+              <label class="field"><span class="mono">Company</span><input type="text" name="company" id="company" autocomplete="organization" placeholder="Optional"></label>
+            </div>
+            <label class="field"><span class="mono">Email</span><input type="email" name="email" id="email" autocomplete="email" required></label>
+            <label class="field field--hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <p class="form__error mono" data-error-for="email">We need a name and a working email.</p>
+            <p class="form__legal mono">By sending you agree that we store this message to reply to it. Nothing else.</p>
+          </fieldset>
+
+          <div class="form__done" id="formDone" hidden>
+            <div class="form__done-board" id="doneFlap" data-word="SENT"></div>
+            <p>Thanks — it's in our inbox. We'll write back within one business day.</p>
+            <p class="mono form__done-meta" id="doneMeta"></p>
+          </div>
+
+          <div class="form__nav">
+            <button type="button" class="btn btn--ghost" id="formBack" hidden><span>Back</span></button>
+            <button type="button" class="btn" id="formNext"><span>Next</span></button>
+            <button type="submit" class="btn" id="formSend" hidden><span>Send</span></button>
+          </div>
+          <p class="form__error form__error--global mono" id="formGlobalError" hidden></p>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="footer__grid mono">
       <div class="footer__col">
         <span class="footer__label">Runbyte</span>
         <span>Software studio</span>
-        <span>Vilnius, Lithuania · Remote-first</span>
+        <span>Working worldwide</span>
       </div>
       <div class="footer__col">
         <span class="footer__label">Sitemap</span>
@@ -404,15 +528,9 @@
         <a href="#faq" data-scroll>FAQ</a>
       </div>
       <div class="footer__col">
-        <span class="footer__label">Elsewhere</span>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">X / Twitter</a>
-      </div>
-      <div class="footer__col">
         <span class="footer__label">Contact</span>
         <a href="mailto:info@runbyte.eu">info@runbyte.eu</a>
-        <span id="footerTime">--:-- EET</span>
+        <a href="#contact" data-scroll>Start a project</a>
         <button class="footer__top" id="toTop">Back to top ↑</button>
       </div>
     </div>
