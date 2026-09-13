@@ -220,7 +220,9 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; transition: opacity .
 .services__index li.is-active a .mono { color: var(--yellow); }
 .services__index li a:hover { color: var(--fg); }
 .panel { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); padding: clamp(40px, 5vw, 72px) 0; border-top: 1px solid var(--line); min-height: 60vh; align-content: start; }
-.panel__viz { aspect-ratio: 5 / 3; background: var(--bg-2); border: 1px solid var(--line); overflow: hidden; }
+.panel__viz { position: relative; aspect-ratio: 5 / 3; background: var(--bg-2) center / cover no-repeat; border: 1px solid var(--line); overflow: hidden; }
+.panel__viz::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,11,.85), rgba(10,10,11,.35)); }
+.panel__viz svg { position: relative; }
 .panel__viz svg { width: 100%; height: 100%; }
 .viz .viz__grid line { stroke: rgba(242,241,236,.07); stroke-width: 1; }
 .viz .viz__block { fill: none; stroke: var(--fg); stroke-width: 1.2; }

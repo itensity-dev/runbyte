@@ -63,6 +63,47 @@ Very wide panoramic photograph of a horizontal flip-dot display strip on a dark 
 Square macro photograph of a flip-dot panel where a 3×3 grid of large round discs is visible; seven discs are flipped to bright yellow and two (center and bottom-right) remain matte black. Dark plastic substrate between discs, warm light from upper left, centered. Style: realistic macro photograph, physical object, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for text glyphs where present. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass, no gradients, no 3D render look, no text other than what is specified, no logos, no watermark, no people.
 ```
 
+## Фото для услуг (панели 5:3, 2000×1200)
+
+Кладутся фоном под SVG-схему в каждой панели услуг, поэтому правая часть кадра занята объектом, левая треть тёмная. Файлы уже прописаны в разметке: положи их в `assets/img/` и они появятся.
+
+| Файл | Услуга |
+|---|---|
+| `svc-web.jpg` | Web platforms |
+| `svc-mobile.jpg` | Mobile apps |
+| `svc-ai.jpg` | AI & automation |
+| `svc-cloud.jpg` | Cloud & DevOps |
+| `svc-design.jpg` | Product design |
+
+## svc-web.jpg — Web platforms — 2000×1200
+
+```
+Dark desk at night with an ultrawide monitor showing a dark-mode website: a large bone-white headline and a single yellow button, all text out of focus and unreadable. A mechanical keyboard in the foreground, one yellow sticky note on the monitor bezel. Everything else falls into black. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+```
+
+## svc-mobile.jpg — Mobile apps — 2000×1200
+
+```
+A matte black smartphone lying on black textured rubber, screen on, showing a minimal dark app interface with bone-white numbers and one yellow rectangular button, details unreadable. A second phone face-down beside it. Warm light grazing the edges of the devices. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+```
+
+## svc-ai.jpg — AI & automation — 2000×1200
+
+```
+An analog oscilloscope on a dark workbench, its round screen showing a bright yellow waveform trace on a black grid, the trace slightly blurred as if moving. Knobs and dials in soft focus, a coiled black cable in the foreground. Everything except the trace is nearly black. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+```
+
+## svc-cloud.jpg — Cloud & DevOps — 2000×1200
+
+```
+Close-up of a network patch panel in a dark server room: rows of black and dark grey ethernet cables neatly bundled, one single yellow cable running diagonally across the frame and plugged in. Small amber status LEDs out of focus in the background. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+```
+
+## svc-design.jpg — Product design — 2000×1200
+
+```
+A designer's dark desk seen from above: black paper sheets with wireframe sketches drawn in bone-white pencil, a steel ruler, a black tablet showing a greyscale interface mockup, and a single yellow marker laid diagonally across the sheets. Warm light from the upper left, soft long shadows. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+```
 ## После генерации
 
 1. Сжать до JPEG ~80. Текстуры для тайлинга проверить на шов (Photoshop: Filter → Other → Offset).
