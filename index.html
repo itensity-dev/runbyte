@@ -78,6 +78,7 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
+      <div class="hero__tex" aria-hidden="true"></div>
       <canvas class="hero__canvas" id="byteField" aria-hidden="true"></canvas>
       <div class="hero__frame" aria-hidden="true">
         <span class="mono hero__corner hero__corner--tl">RUNBYTE / SOFTWARE STUDIO</span>
@@ -115,6 +116,14 @@
       <p class="statement__text" data-fill>Runbyte is a software studio. We design and build web platforms, mobile apps and AI systems for companies that can't afford downtime — then we stay to keep them fast, monitored and boring in the best possible way.</p>
     </section>
 
+    <!-- ============ POSTER ============ -->
+    <figure class="poster" aria-label="Runbyte flip-dot board">
+      <div class="poster__media" data-clip>
+        <img src="assets/img/wallpaper-desktop.webp" alt="" width="1672" height="941" data-parallax="0.16" loading="lazy">
+      </div>
+      <figcaption class="mono"><span>Fig. 01 — The board, Hall B</span><span>3 456 dots · 1 byte each</span></figcaption>
+    </figure>
+
     <!-- ============ SERVICES: sticky index ============ -->
     <section class="services" id="services">
       <div class="services__head">
@@ -134,7 +143,7 @@
         <div class="services__panels">
 
           <article class="panel" id="svc-web" data-index="0">
-            <div class="panel__viz" aria-hidden="true" style="background-image:url(assets/img/svc-web.jpg)">
+            <div class="panel__viz" aria-hidden="true">
               <svg viewBox="0 0 400 240" class="viz viz--grid">
                 <g class="viz__grid"></g>
                 <rect class="viz__block" x="40" y="40" width="140" height="70"/>
@@ -155,7 +164,7 @@
           </article>
 
           <article class="panel" id="svc-mobile" data-index="1">
-            <div class="panel__viz" aria-hidden="true" style="background-image:url(assets/img/svc-mobile.jpg)">
+            <div class="panel__viz" aria-hidden="true">
               <svg viewBox="0 0 400 240" class="viz viz--phone">
                 <rect class="viz__phone" x="150" y="20" width="100" height="200" rx="14"/>
                 <rect class="viz__block" x="164" y="44" width="72" height="14"/>
@@ -178,7 +187,7 @@
           </article>
 
           <article class="panel" id="svc-ai" data-index="2">
-            <div class="panel__viz" aria-hidden="true" style="background-image:url(assets/img/svc-ai.jpg)">
+            <div class="panel__viz" aria-hidden="true">
               <svg viewBox="0 0 400 240" class="viz viz--wave">
                 <path class="viz__wave" d=""/>
                 <path class="viz__wave viz__wave--2" d=""/>
@@ -197,7 +206,7 @@
           </article>
 
           <article class="panel" id="svc-cloud" data-index="3">
-            <div class="panel__viz" aria-hidden="true" style="background-image:url(assets/img/svc-cloud.jpg)">
+            <div class="panel__viz" aria-hidden="true">
               <svg viewBox="0 0 400 240" class="viz viz--nodes">
                 <g class="viz__links"></g>
                 <g class="viz__nodes"></g>
@@ -215,7 +224,7 @@
           </article>
 
           <article class="panel" id="svc-design" data-index="4">
-            <div class="panel__viz" aria-hidden="true" style="background-image:url(assets/img/svc-design.jpg)">
+            <div class="panel__viz" aria-hidden="true">
               <svg viewBox="0 0 400 240" class="viz viz--design">
                 <rect class="viz__frame" x="40" y="30" width="320" height="180"/>
                 <line class="viz__guide" x1="120" y1="30" x2="120" y2="210"/>

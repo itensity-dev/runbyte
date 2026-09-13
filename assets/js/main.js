@@ -279,6 +279,16 @@
     });
   });
   if (!reduce) {
+    $$('[data-clip]').forEach((el) => {
+      const img = $('img', el);
+      gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 82%', once: true } })
+        .to(el, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'inOut' }, 0)
+        .to(img, { scale: 1, duration: 1.8, ease: 'out' }, 0.05);
+    });
+    $$('[data-parallax]').forEach((img) => {
+      const k = parseFloat(img.dataset.parallax) || 0.15;
+      gsap.fromTo(img, { yPercent: -k * 50 }, { yPercent: k * 50, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
     ScrollTrigger.batch('[data-reveal]:not(.hero [data-reveal])', { start: 'top 88%', once: true, onEnter: (b) => b.forEach((el, i) => setTimeout(() => el.classList.add('is-in'), i * 80)) });
   } else $$('[data-reveal]').forEach((el) => el.classList.add('is-in'));
 

@@ -34,7 +34,19 @@ wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
 
 ## Картинки
 
-Фотографий на сайте нет намеренно: все визуалы процедурные (canvas-поле байтов, SVG-схемы, флип-табло). Единственная картинка — `assets/img/og.jpg` для превью ссылки.
+Все в `assets/img/`, формат webp:
+
+| Файл | Где используется |
+|---|---|
+| `tex-flipdot.webp` | подложка под canvas в hero |
+| `wallpaper-desktop.webp` | постер после манифеста |
+| `tex-grille-tile.webp` | фон секции Process (выровненная по яркости версия `tex-grille.webp`) |
+| `tex-plastic-tile.webp` | фон карточек стадий и панелей услуг (бесшовная версия `tex-plastic.webp`) |
+| `tex-splitflap.webp` | фон CTA |
+| `og.jpg` | превью ссылки в соцсетях |
+| `wallpaper-phone.webp`, `banner-linkedin.webp`, `avatar.webp` | для соцсетей, на сайте не используются |
+
+Промты для генерации — в `docs/IMAGE-PROMPTS.md`.
 
 ## Деплой на Cloudflare Workers
 
