@@ -65,44 +65,44 @@ Square macro photograph of a flip-dot panel where a 3×3 grid of large round dis
 
 ## Фото для услуг (панели 5:3, 2000×1200)
 
-Кладутся фоном под SVG-схему в каждой панели услуг, поэтому правая часть кадра занята объектом, левая треть тёмная. Файлы уже прописаны в разметке: положи их в `assets/img/` и они появятся.
+Серия предметных натюрмортов: чёрный механический объект на чёрном фоне и одна жёлтая деталь. Каждый предмет — метафора услуги, а не иллюстрация рабочего места. Файлы уже прописаны в разметке: положи их в `assets/img/` и они появятся.
 
-| Файл | Услуга |
-|---|---|
-| `svc-web.jpg` | Web platforms |
-| `svc-mobile.jpg` | Mobile apps |
-| `svc-ai.jpg` | AI & automation |
-| `svc-cloud.jpg` | Cloud & DevOps |
-| `svc-design.jpg` | Product design |
+| Файл | Услуга | Объект |
+|---|---|---|
+| `svc-web.jpg` | Web platforms | пегборд и жёлтый шнур, натянутый в решётку |
+| `svc-mobile.jpg` | Mobile apps | карманный компас с жёлтой стрелкой |
+| `svc-ai.jpg` | AI & automation | перфолента механического пианино, подсвеченная сзади |
+| `svc-cloud.jpg` | Cloud & DevOps | чугунный коллектор с одним жёлтым вентилем |
+| `svc-design.jpg` | Product design | штангенциркуль, измеряющий жёлтый диск |
 
 ## svc-web.jpg — Web platforms — 2000×1200
 
 ```
-Dark desk at night with an ultrawide monitor showing a dark-mode website: a large bone-white headline and a single yellow button, all text out of focus and unreadable. A mechanical keyboard in the foreground, one yellow sticky note on the monitor bezel. Everything else falls into black. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+A black steel pegboard with a lattice of short pegs; a single continuous yellow elastic cord is stretched between the pegs forming a taut geometric network, like a structure under load. Three-quarter view from slightly above, the cord in sharp focus, the far pegs softening. Style: editorial still-life photograph shot in a studio on a black seamless backdrop, one hard directional light from the upper left, crisp shadows, tactile surfaces, product-photography precision, fine film grain, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 on exactly one element, bone white #F2F1EC only for tiny engraved marks. Composition: 5:3 landscape, the object occupies the right two thirds, the left third stays pure black. Negative: no desks, no screens, no laptops, no phones, no keyboards, no cables, no purple, no blue or cyan light, no neon glow, no lens flare, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no hands.
 ```
 
 ## svc-mobile.jpg — Mobile apps — 2000×1200
 
 ```
-A matte black smartphone lying on black textured rubber, screen on, showing a minimal dark app interface with bone-white numbers and one yellow rectangular button, details unreadable. A second phone face-down beside it. Warm light grazing the edges of the devices. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+A small brass pocket compass with a blackened case, lid open, its needle painted flip-dot yellow, resting on a strip of coarse black nylon webbing. Shot from a low three-quarter angle so the needle catches the light. Style: editorial still-life photograph shot in a studio on a black seamless backdrop, one hard directional light from the upper left, crisp shadows, tactile surfaces, product-photography precision, fine film grain, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 on exactly one element, bone white #F2F1EC only for tiny engraved marks. Composition: 5:3 landscape, the object occupies the right two thirds, the left third stays pure black. Negative: no desks, no screens, no laptops, no phones, no keyboards, no cables, no purple, no blue or cyan light, no neon glow, no lens flare, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no hands.
 ```
 
 ## svc-ai.jpg — AI & automation — 2000×1200
 
 ```
-An analog oscilloscope on a dark workbench, its round screen showing a bright yellow waveform trace on a black grid, the trace slightly blurred as if moving. Knobs and dials in soft focus, a coiled black cable in the foreground. Everything except the trace is nearly black. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+A strip of black player-piano roll paper with rows of punched rectangular holes, curling over a black brass roller; warm yellow light shines through the holes from behind so each perforation glows. Diagonal composition, the holes in sharp focus in the middle, edges falling into darkness. Style: editorial still-life photograph shot in a studio on a black seamless backdrop, one hard directional light from the upper left, crisp shadows, tactile surfaces, product-photography precision, fine film grain, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 on exactly one element, bone white #F2F1EC only for tiny engraved marks. Composition: 5:3 landscape, the object occupies the right two thirds, the left third stays pure black. Negative: no desks, no screens, no laptops, no phones, no keyboards, no cables, no purple, no blue or cyan light, no neon glow, no lens flare, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no hands.
 ```
 
 ## svc-cloud.jpg — Cloud & DevOps — 2000×1200
 
 ```
-Close-up of a network patch panel in a dark server room: rows of black and dark grey ethernet cables neatly bundled, one single yellow cable running diagonally across the frame and plugged in. Small amber status LEDs out of focus in the background. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+A cast-iron pipe manifold painted matte black, three valve stems in a row, exactly one valve handwheel painted flip-dot yellow. Frontal view with slight perspective, industrial texture, a faint dusting of grey on the flanges. Style: editorial still-life photograph shot in a studio on a black seamless backdrop, one hard directional light from the upper left, crisp shadows, tactile surfaces, product-photography precision, fine film grain, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 on exactly one element, bone white #F2F1EC only for tiny engraved marks. Composition: 5:3 landscape, the object occupies the right two thirds, the left third stays pure black. Negative: no desks, no screens, no laptops, no phones, no keyboards, no cables, no purple, no blue or cyan light, no neon glow, no lens flare, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no hands.
 ```
 
 ## svc-design.jpg — Product design — 2000×1200
 
 ```
-A designer's dark desk seen from above: black paper sheets with wireframe sketches drawn in bone-white pencil, a steel ruler, a black tablet showing a greyscale interface mockup, and a single yellow marker laid diagonally across the sheets. Warm light from the upper left, soft long shadows. Style: realistic photograph, physical objects, matte surfaces, fine film grain, single warm key light from upper left, deep shadows, slightly underexposed, shallow depth of field. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 as the only saturated color, bone white #F2F1EC for screen text where present. Composition: 5:3 landscape, the subject in the right two thirds, the left third mostly dark and empty so line graphics can be drawn over it. Negative: no purple, no blue or cyan light, no neon glow, no lens flare, no glass reflections, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no faces.
+Black precision vernier calipers holding a single small yellow disc between the jaws, measuring it; blackened steel, engraved millimeter scale barely visible. Top-down view on black, the disc perfectly centered in the right half. Style: editorial still-life photograph shot in a studio on a black seamless backdrop, one hard directional light from the upper left, crisp shadows, tactile surfaces, product-photography precision, fine film grain, slightly underexposed. Palette: near-black #0A0A0B, graphite #1A1A1D, flip-dot yellow #FFC940 on exactly one element, bone white #F2F1EC only for tiny engraved marks. Composition: 5:3 landscape, the object occupies the right two thirds, the left third stays pure black. Negative: no desks, no screens, no laptops, no phones, no keyboards, no cables, no purple, no blue or cyan light, no neon glow, no lens flare, no gradients, no 3D render look, no readable text, no logos, no watermark, no people, no hands.
 ```
 ## После генерации
 
