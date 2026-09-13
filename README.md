@@ -72,12 +72,25 @@ npx wrangler login      # откроется браузер, разреши до
 npx wrangler deploy     # выведет URL вида https://runbyte.<аккаунт>.workers.dev
 ```
 
-### Свой домен
+### Свой домен (runbyte.eu)
 
-В воркере → **Settings** → **Domains & Routes** → **Add** → **Custom domain** → ввести домен. Если домен уже в Cloudflare, DNS создастся автоматически.
+**Если DNS домена ещё не в Cloudflare** (домен куплен у регистратора и ведёт на его сервера):
+
+1. Cloudflare Dashboard → **Add a domain** → ввести `runbyte.eu` → план Free.
+2. Cloudflare покажет два своих nameserver'а вида `xxx.ns.cloudflare.com`. Прописать их у регистратора вместо текущих (раздел Nameservers / DNS-серверы). Обновление занимает от нескольких минут до суток, статус в Cloudflare сменится на Active.
+
+**Привязка воркера к домену** (когда домен в Cloudflare):
+
+1. **Workers & Pages** → **runbyte** → **Settings** → **Domains & Routes** → **Add** → **Custom Domain**.
+2. Ввести `runbyte.eu`, нажать **Add domain**. Cloudflare сам создаст DNS-запись и выпустит SSL-сертификат.
+3. Повторить для `www.runbyte.eu`, либо сделать редирект: **Rules** → **Redirect Rules** → шаблон «Redirect from WWW to root».
+
+Через несколько минут сайт открывается по https://runbyte.eu. Адрес `*.workers.dev` можно оставить или отключить в **Settings** → **Domains & Routes**.
 
 ## Что поменять перед публикацией
 
-- `index.html`: адрес `hello@runbyte.dev`, телефон, город, ссылки на соцсети (`href="#"`), canonical/og URL (`https://runbyte.dev/`).
-- Цены в FAQ (€25k–€250k, discovery от €4k) и часы работы (8:00–20:00 CET).
+- `index.html`: ссылки на соцсети (`href="#"`), «EST. 2017» в hero.
+- Цены в FAQ (€25k–€250k, discovery от €4k).
+
+Контакты уже реальные: `info@runbyte.eu`, Vilnius, время EET.
 - «EST. 2017» в углу hero.

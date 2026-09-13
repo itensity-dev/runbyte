@@ -42,9 +42,11 @@
 
   /* ---------- Clock ---------- */
   const tick = () => {
-    const str = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' }).format(new Date());
-    ['#localTime', '#menuTime'].forEach((s) => { const el = $(s); if (el) el.textContent = `ZRH ${str}`; });
-    const f = $('#footerTime'); if (f) f.textContent = `${str} CET`;
+    const now = new Date();
+    const str = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Vilnius' }).format(now);
+    const zone = (new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Vilnius', timeZoneName: 'short' }).formatToParts(now).find((p) => p.type === 'timeZoneName') || {}).value || 'EET';
+    ['#localTime', '#menuTime'].forEach((s) => { const el = $(s); if (el) el.textContent = `VNO ${str}`; });
+    const f = $('#footerTime'); if (f) f.textContent = `${str} ${zone}`;
   };
   tick(); setInterval(tick, 15000);
 
