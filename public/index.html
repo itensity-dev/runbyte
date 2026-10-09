@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Runbyte — Software Studio | Web Platforms, Mobile Apps, AI &amp; Cloud</title>
-  <meta name="description" content="Runbyte is a software studio. We design and engineer web platforms, mobile apps, AI systems and cloud infrastructure — and keep them running after launch. Fixed scope, fixed price, you own the code.">
+  <title>Runbyte — Software Studio for Web, Mobile, AI &amp; Cloud</title>
+  <meta name="description" content="Runbyte is a software studio that designs and builds web platforms, mobile apps, AI systems and cloud infrastructure, then keeps them running after launch.">
   <meta name="keywords" content="software studio, software development company, web platform development, mobile app development, AI integration, LLM development, cloud DevOps, product design, custom software Europe">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="Runbyte">
+  <meta name="author" content="RunByte UAB">
   <meta name="theme-color" content="#0a0a0b">
   <link rel="canonical" href="https://runbyte.eu/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/img/avatar.webp">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Runbyte">
   <meta property="og:locale" content="en_US">
@@ -35,17 +37,36 @@
         "@id": "https://runbyte.eu/#org",
         "name": "Runbyte",
         "url": "https://runbyte.eu/",
-        "logo": "https://runbyte.eu/assets/img/avatar.webp",
+        "logo": "https://runbyte.eu/assets/icons/icon-512.png",
         "email": "info@runbyte.eu",
         "description": "Software studio: web platforms, mobile apps, AI systems and cloud infrastructure.",
-        "contactPoint": { "@type": "ContactPoint", "email": "info@runbyte.eu", "contactType": "sales", "availableLanguage": ["en"] }
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@runbyte.eu",
+          "contactType": "sales",
+          "availableLanguage": [
+            "en"
+          ]
+        },
+        "legalName": "RunByte UAB",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "LT company code",
+          "value": "308145424"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LT"
+        }
       },
       {
         "@type": "WebSite",
         "@id": "https://runbyte.eu/#site",
         "url": "https://runbyte.eu/",
         "name": "Runbyte",
-        "publisher": { "@id": "https://runbyte.eu/#org" },
+        "publisher": {
+          "@id": "https://runbyte.eu/#org"
+        },
         "inLanguage": "en"
       },
       {
@@ -55,38 +76,106 @@
         "url": "https://runbyte.eu/",
         "image": "https://runbyte.eu/assets/img/og.jpg",
         "email": "info@runbyte.eu",
-        "priceRange": "$$$",
         "areaServed": "Worldwide",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web platform development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile app development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI and automation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud and DevOps" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product design" } }
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Web platform development"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Mobile app development"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "AI and automation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Cloud and DevOps"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Product design"
+              }
+            }
           ]
+        },
+        "legalName": "RunByte UAB",
+        "parentOrganization": {
+          "@id": "https://runbyte.eu/#org"
         }
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "How fast can you start?", "acceptedAnswer": { "@type": "Answer", "text": "Usually within two to three weeks of the first call. If the scope is already clear, discovery can start sooner." } },
-          { "@type": "Question", "name": "Do you take over existing codebases?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A large part of our work is stabilising and extending systems built by someone else. We start with a technical audit." } },
-          { "@type": "Question", "name": "Do you work with clients abroad?", "acceptedAnswer": { "@type": "Answer", "text": "Most of our clients are. We keep overlapping working hours with your team and run everything in English." } },
-          { "@type": "Question", "name": "How do we communicate during the project?", "acceptedAnswer": { "@type": "Answer", "text": "A shared Slack channel, a weekly demo, and a staging link that is always up to date." } },
-          { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do, from the first commit. Everything lives in your repositories and your cloud accounts." } }
+          {
+            "@type": "Question",
+            "name": "How fast can you start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually within two to three weeks of the first call. If the scope is already clear, discovery can start sooner. We never take on more than we can staff properly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you take over existing codebases?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A large part of our work is stabilising and extending systems built by someone else. We start with a technical audit so you know what you have before we touch it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with clients abroad?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most of our clients are. We keep overlapping working hours with your team, run everything in English, and have shipped projects for companies in Europe, the US and the Middle East."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do we communicate during the project?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A shared Slack channel, a weekly demo, and a staging link that's always up to date. You talk directly to the people building your product."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who owns the code?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You do, from the first commit. Everything lives in your repositories and your cloud accounts."
+            }
+          }
         ]
       }
     ]
   }
   </script>
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.__rb)document.documentElement.classList.remove("js")},6000)</script>
   <link rel="preload" href="assets/fonts/archivo-normal-100-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-mono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/fonts.css?v=3">
+  <link rel="stylesheet" href="assets/css/main.css?v=3">
 </head>
 <body class="is-loading">
 
@@ -119,11 +208,11 @@
     <div class="nav__right">
       <span class="nav__byte" id="navByte" title="Page progress, one byte" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
       <a href="#contact" class="btn btn--sm" data-scroll><span>Start a project</span></a>
-      <button class="nav__burger mono" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span>Menu</span></button>
+      <button type="button" class="nav__burger mono" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span>Menu</span></button>
     </div>
   </header>
 
-  <div class="menu" id="menu" aria-hidden="true">
+  <div class="menu" id="menu" inert>
     <nav class="menu__links" aria-label="Mobile">
       <a href="#services" data-scroll><span class="mono">01</span>Services</a>
       <a href="#process" data-scroll><span class="mono">02</span>Process</a>
@@ -491,7 +580,7 @@
             <label class="field"><span class="mono">Email</span><input type="email" name="email" id="email" autocomplete="email" required></label>
             <label class="field field--hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
             <p class="form__error mono" data-error-for="email">We need a name and a working email.</p>
-            <p class="form__legal mono">By sending you agree that we store this message to reply to it. Nothing else.</p>
+            <p class="form__legal mono">We use these details only to reply to you. See our <a href="/privacy/">privacy policy</a>.</p>
           </fieldset>
 
           <div class="form__done" id="formDone" hidden>
@@ -518,6 +607,7 @@
         <span class="footer__label">Runbyte</span>
         <span>Software studio</span>
         <span>Working worldwide</span>
+        <a href="/legal/">Company information</a>
       </div>
       <div class="footer__col">
         <span class="footer__label">Sitemap</span>
@@ -531,13 +621,13 @@
         <span class="footer__label">Contact</span>
         <a href="mailto:info@runbyte.eu">info@runbyte.eu</a>
         <a href="#contact" data-scroll>Start a project</a>
-        <button class="footer__top" id="toTop">Back to top ↑</button>
+        <button type="button" class="footer__top" id="toTop">Back to top ↑</button>
       </div>
     </div>
     <div class="footer__flap" id="footerFlap" data-word="RUNBYTE" aria-hidden="true"></div>
     <div class="footer__bottom mono">
-      <span>© 2026 Runbyte. All rights reserved.</span>
-      <span><a href="#">Privacy</a> · <a href="#">Imprint</a></span>
+      <span>© 2026 RunByte UAB · Company code 308145424</span>
+      <span><a href="/privacy/">Privacy policy</a> · <a href="/legal/">Legal notice</a></span>
     </div>
   </footer>
 
@@ -547,6 +637,6 @@
   <script src="assets/js/vendor/ScrambleTextPlugin.min.js"></script>
   <script src="assets/js/vendor/CustomEase.min.js"></script>
   <script src="assets/js/vendor/lenis.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>

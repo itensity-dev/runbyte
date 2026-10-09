@@ -360,14 +360,14 @@
   const menuLinks = $$('.menu__links a', menu);
   const openMenu = () => {
     menuOpen = true; burger.setAttribute('aria-expanded', 'true'); burger.querySelector('span').textContent = 'Close';
-    menu.setAttribute('aria-hidden', 'false'); nav.classList.remove('is-hidden'); lenis?.stop();
+    menu.inert = false; nav.classList.remove('is-hidden'); lenis?.stop();
     gsap.set(menu, { visibility: 'visible' });
     gsap.timeline().to(menu, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'inOut' }).from(menuLinks, { yPercent: 60, opacity: 0, stagger: 0.05, duration: 0.7 }, '-=0.35');
   };
   function closeMenu() {
     if (!menuOpen) return;
     menuOpen = false; burger.setAttribute('aria-expanded', 'false'); burger.querySelector('span').textContent = 'Menu';
-    menu.setAttribute('aria-hidden', 'true'); lenis?.start();
+    menu.inert = true; lenis?.start();
     gsap.to(menu, { clipPath: 'inset(0 0 100% 0)', duration: 0.6, ease: 'inOut', onComplete: () => gsap.set(menu, { visibility: 'hidden' }) });
   }
   burger.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
@@ -498,4 +498,5 @@
   }
 
   window.addEventListener('load', () => ScrollTrigger.refresh());
+  window.__rb = 1;
 })();

@@ -43,7 +43,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 ul { list-style: none; margin: 0; padding: 0; }
 h1, h2, h3, p, dl, dd, dt, figure { margin: 0; }
 ::selection { background: var(--yellow); color: var(--bg); }
-body.is-loading { overflow: hidden; }
+html.js body.is-loading { overflow: hidden; }
 [hidden] { display: none !important; }
 
 .mono {
@@ -338,6 +338,7 @@ html.js [data-clip] img { transform: scale(1.12); }
 .form__error.is-visible { display: block; }
 .form__error--global { display: block; margin-top: 16px; }
 .form__legal { color: var(--mute); margin-top: 22px; }
+.form__legal a { color: var(--fg); border-bottom: 1px solid var(--yellow); }
 .form__nav { display: flex; gap: 10px; justify-content: flex-end; margin-top: 32px; }
 .form.is-sending .form__nav { opacity: .5; pointer-events: none; }
 .form__done { padding: 12px 0 8px; }
@@ -356,6 +357,7 @@ html.js [data-clip] img { transform: scale(1.12); }
 .footer__flap .flap-board { width: 100%; justify-content: space-between; }
 .footer__flap .flap { width: 13.6%; height: 1.05em; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--mute); }
+.footer__bottom a { transition: color .3s; }
 .footer__bottom a:hover { color: var(--fg); }
 
 @media (max-width: 1100px) {

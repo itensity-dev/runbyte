@@ -1,16 +1,6 @@
-.git
-.gitignore
 .assetsignore
-node_modules
-docs
-README.md
-wrangler.jsonc
-package.json
-package-lock.json
-.wrangler
 assets/img/wallpaper-phone.webp
 assets/img/banner-linkedin.webp
 assets/img/avatar.webp
 assets/img/tex-plastic.webp
 assets/img/tex-grille.webp
-src

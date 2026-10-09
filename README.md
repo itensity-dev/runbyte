@@ -4,39 +4,48 @@
 
 ## Запуск локально
 
-Нужен любой статик-сервер (открывать `index.html` двойным кликом нельзя — шрифты и картинки не подгрузятся из-за `file://`).
+Сайт лежит в `public/`. Ровно как на Cloudflare, с воркером формы, `_headers` и 404:
 
 ```bash
-# вариант 1 — Python
-python3 -m http.server 8080
-
-# вариант 2 — Node
-npx serve .
+npm install
+npm run dev        # http://localhost:8787
 ```
 
-Открой http://localhost:8080.
+Без Node, только статика (форма отправляться не будет):
+
+```bash
+python3 -m http.server 8080 --directory public
+```
 
 ## Структура
 
 ```
-index.html            — вся страница
-assets/css/main.css   — дизайн-система и стили секций
-assets/css/fonts.css  — @font-face (шрифты самохостятся)
-assets/js/main.js     — все интеракции
-assets/js/vendor/     — gsap, ScrollTrigger, SplitText, CustomEase, lenis
-assets/fonts/         — Bricolage Grotesque, Instrument Serif, JetBrains Mono (woff2)
-assets/img/og.jpg     — превью для соцсетей (скриншот hero)
-docs/DESIGN.md        — дизайн-система и правила «не-AI стиля»
-src/worker.js         — воркер: /api/contact для формы, остальное статика
-_headers              — заголовки для Cloudflare (кэш, безопасность)
-robots.txt, sitemap.xml, 404.html
-wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
-.assetsignore         — что не выгружать на Workers
+public/                    — всё, что уходит на хостинг, и только это
+  index.html               — главная
+  legal/index.html         — Legal notice: реквизиты RunByte UAB и условия использования
+  privacy/index.html       — Privacy policy (GDPR)
+  404.html                 — страница «не найдено»
+  _headers                 — кэш и заголовки безопасности для Cloudflare
+  robots.txt, sitemap.xml, site.webmanifest
+  favicon.ico, favicon.svg, apple-touch-icon.png
+  assets/css/main.css      — стили главной
+  assets/css/legal.css     — стили юридических страниц
+  assets/css/fonts.css     — @font-face, шрифты самохостятся
+  assets/js/main.js        — все интеракции главной
+  assets/js/vendor/        — gsap, ScrollTrigger, SplitText, ScrambleText, CustomEase, lenis
+  assets/fonts/            — Archivo, IBM Plex Mono (woff2)
+  assets/icons/            — иконки 192/512 для Android и манифеста
+  assets/img/              — картинки и текстуры
+  .assetsignore            — файлы из public/, которые не выгружаются (картинки для соцсетей)
+src/worker.js              — воркер: POST /api/contact для формы, остальное отдаёт статика
+wrangler.jsonc             — конфиг Cloudflare Workers
+docs/DESIGN.md             — дизайн-система и правила «не-AI стиля»
+docs/IMAGE-PROMPTS.md      — промты для генерации картинок
 ```
 
 ## Картинки
 
-Все в `assets/img/`, формат webp:
+Все в `public/assets/img/`, формат webp. Новые файлы загружать туда же.
 
 | Файл | Где используется |
 |---|---|
@@ -44,12 +53,17 @@ wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
 | `wallpaper-desktop.webp` | постер после манифеста |
 | `tex-grille-tile.webp` | фон секции Process (выровненная по яркости версия `tex-grille.webp`) |
 | `tex-plastic-tile.webp` | фон карточек стадий и панелей услуг (бесшовная версия `tex-plastic.webp`) |
-| `tex-splitflap.webp` | фон CTA |
-| `og.jpg` | превью ссылки в соцсетях |
-| `avatar.webp` | apple-touch-icon и логотип в JSON-LD |
-| `wallpaper-phone.webp`, `banner-linkedin.webp` | для соцсетей, на сайте не используются |
+| `tex-splitflap.webp` | фон блока с формой |
+| `og.jpg` | превью ссылки в соцсетях (снимок hero) |
+| `wallpaper-phone.webp`, `banner-linkedin.webp`, `avatar.webp` | для соцсетей, на хостинг не выгружаются |
 
-Промты для генерации — в `docs/IMAGE-PROMPTS.md`.
+## Кэш
+
+| Что | Политика |
+|---|---|
+| шрифты, `assets/js/vendor/` | год, `immutable`: эти файлы не меняются |
+| картинки и иконки | неделя |
+| `assets/css/*`, `assets/js/main.js`, HTML | `max-age=0, must-revalidate`: браузер каждый раз сверяется с сервером, правки видны сразу |
 
 ## Деплой на Cloudflare Workers
 
@@ -64,7 +78,7 @@ wrangler.jsonc        — конфиг Cloudflare Workers (static assets)
    - Production branch: ветка, где лежит сайт (`main` или текущая рабочая ветка)
    - Build command: *(пусто)*
    - Deploy command: `npx wrangler deploy`
-   - Root directory: `/`
+   - Root directory: `/` (сайт берётся из `public/`, это задано в `wrangler.jsonc`)
 4. **Create and deploy**. Через ~1 минуту сайт будет на `https://runbyte.<твой-аккаунт>.workers.dev`.
 
 ### Вариант B — с компьютера одной командой
@@ -119,8 +133,14 @@ npx wrangler deploy     # выведет URL вида https://runbyte.<акка�
 
 После подключения домена: добавить сайт в Google Search Console и отправить `https://runbyte.eu/sitemap.xml`.
 
+## Юридические данные
+
+Оператор сайта: **RunByte UAB**, company code **308145424**, Литва. Реквизиты стоят в футере главной, в `public/legal/index.html`, `public/privacy/index.html` и в JSON-LD главной (`legalName`, `identifier`).
+
 ## Что поменять перед публикацией
 
-- Ссылки Privacy и Imprint в футере (`href="#"`): нужны реальные страницы.
 - Секрет `RESEND_API_KEY` для формы (см. выше).
+- `public/legal/index.html`, строка «Registered office»: вписать юридический адрес из регистра. Закон Литвы об услугах информационного общества требует указывать его на сайте.
+- Если компания плательщик НДС, добавить строку «VAT code» туда же.
+- Если подключите почтовый сервис для формы, назвать его в `public/privacy/index.html`, раздел «Who receives the data».
 - «EST. 2017» в углу hero.
