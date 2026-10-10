@@ -71,11 +71,9 @@
             '<a href="mailto:info@runbyte.eu" style="color:#0a0a0b;text-decoration:none;"><span style="color:#0a0a0b;text-decoration:none;">info@runbyte.eu</span></a>' +
             (tel ? '<span style="color:#e0a800;">&nbsp;&nbsp;&#9679;&nbsp;&nbsp;</span><a href="tel:' + esc(tel) + '" style="color:#0a0a0b;text-decoration:none;"><span style="color:#0a0a0b;text-decoration:none;">' + esc(phone) + '</span></a>' : '') +
           '</td></tr>' +
-          '<tr><td style="padding:14px 0 0 0;"><table cellpadding="0" cellspacing="0" border="0" role="presentation" width="480" style="border-collapse:collapse;width:480px;max-width:100%;"><tr><td style="border-top:1px solid #e5e3dc;font-size:0;line-height:0;height:1px;">&nbsp;</td></tr></table></td></tr>' +
-          '<tr><td style="padding:10px 0 0 0;font-size:11px;line-height:16px;color:#8a8a86;">RunByte UAB &middot; Company code 308145424 &middot; Giruli&#371;&#8204; g.&#8204; 5, LT&#8204;-12124 Vilnius</td></tr>' +
-        '</table>';
+          '</table>';
       };
-      const text = (name, role, phone) => [name, role + ' · RunByte', '', 'runbyte.eu · info@runbyte.eu' + (phone ? ' · ' + phone : ''), 'RunByte UAB · Company code 308145424 · Girulių g. 5, LT-12124 Vilnius'].join('\n');
+      const text = (name, role, phone) => [name, role + ' · RunByte', '', 'runbyte.eu · info@runbyte.eu' + (phone ? ' · ' + phone : '')].join('\n');
       const render = () => {
         $('sig').innerHTML = html($('sigName').value.trim() || 'Your Name', $('sigRole').value.trim() || 'Founder', $('sigPhone').value.trim());
         const img = $('sig').querySelector('img');
