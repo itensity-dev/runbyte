@@ -28,3 +28,6 @@
 
 /assets/js/consent.js
   Cache-Control: public, max-age=0, must-revalidate
+
+/assets/email/*
+  Cache-Control: public, max-age=86400

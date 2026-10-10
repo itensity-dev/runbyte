@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /signature/
 
 Sitemap: https://runbyte.eu/sitemap.xml

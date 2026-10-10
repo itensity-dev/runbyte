@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email signature — Runbyte</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
+  <style>
+    :root { --bg: #0a0a0b; --fg: #f2f1ec; --mute: #8a8a86; --line: rgba(242,241,236,.14); --yellow: #ffc940; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Archivo", Arial, sans-serif; padding: clamp(32px, 6vw, 72px) clamp(16px, 4vw, 64px); }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
+    h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; font-stretch: 115%; letter-spacing: -.04em; line-height: .95; margin: 10px 0 28px; }
+    .grid { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+    label { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; color: var(--mute); }
+    input { background: transparent; border: 0; border-bottom: 1px solid rgba(242,241,236,.35); color: var(--fg); font: inherit; font-size: 17px; padding: 10px 0; outline: none; text-transform: none; letter-spacing: 0; }
+    input:focus { border-bottom-color: var(--yellow); }
+    .btn { display: inline-block; padding: 16px 22px; background: var(--yellow); color: var(--bg); border: 0; cursor: pointer; }
+    .btn:hover { background: var(--fg); }
+    .status { color: var(--mute); margin-top: 14px; min-height: 18px; }
+    .paper { background: #ffffff; padding: 28px; border: 1px solid var(--line); overflow-x: auto; }
+    ol { color: #cfcdc6; padding-left: 18px; line-height: 1.6; margin: 28px 0 0; max-width: 60ch; }
+    ol li::marker { color: var(--yellow); }
+    .warn { color: var(--yellow); margin-top: 10px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  </style>
+</head>
+<body>
+  <span class="mono" style="color:var(--mute)">Runbyte · internal</span>
+  <h1>Email signature</h1>
+  <div class="grid">
+    <div>
+      <label class="mono">Имя<input id="sigName" type="text" value="Your Name" autocomplete="name"></label>
+      <label class="mono">Должность<input id="sigRole" type="text" value="Founder" autocomplete="organization-title"></label>
+      <label class="mono">Телефон, по желанию<input id="sigPhone" type="tel" value="" placeholder="+370 600 00000" autocomplete="tel"></label>
+      <button type="button" class="btn mono" id="copy">Скопировать подпись</button>
+      <p class="status mono" id="status"></p>
+    </div>
+    <div>
+      <div class="paper" id="sig"></div>
+      <p class="warn mono" id="imgWarn" hidden>Баннер не загрузился с runbyte.eu: проверь, что домен подключён к воркеру.</p>
+      <ol>
+        <li>Впиши имя, должность и, если нужно, телефон.</li>
+        <li>Нажми «Скопировать подпись».</li>
+        <li>Spacemail → Settings → Signature → Manage signatures → новая подпись → вставь (Ctrl+V / Cmd+V) в редактор.</li>
+        <li>Отметь её галочкой как подпись по умолчанию и сохрани.</li>
+      </ol>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const BASE = 'https://runbyte.eu';
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const $ = (id) => document.getElementById(id);
+      const html = (name, role, phone) => {
+        const tel = phone ? phone.replace(/[^\d+]/g, '') : '';
+        return '<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#0a0a0b;">' +
+          '<tr><td style="padding:0 0 2px 0;font-size:16px;line-height:22px;font-weight:bold;color:#0a0a0b;">' + esc(name) + '</td></tr>' +
+          '<tr><td style="padding:0 0 14px 0;font-size:13px;line-height:18px;color:#6f6f6a;">' + esc(role) + ' &middot; RunByte</td></tr>' +
+          '<tr><td style="padding:0;"><a href="' + BASE + '/" style="text-decoration:none;"><img src="' + BASE + '/assets/email/signature-banner.png" width="480" height="64" alt="RUNBYTE &mdash; software that runs." style="display:block;width:480px;max-width:100%;height:auto;border:0;"></a></td></tr>' +
+          '<tr><td style="padding:12px 0 0 0;font-size:11px;line-height:16px;color:#6f6f6a;letter-spacing:1px;">WEB PLATFORMS &nbsp;&middot;&nbsp; MOBILE APPS &nbsp;&middot;&nbsp; AI &amp; AUTOMATION &nbsp;&middot;&nbsp; CLOUD</td></tr>' +
+          '<tr><td style="padding:8px 0 0 0;font-size:13px;line-height:20px;color:#0a0a0b;">' +
+            '<a href="' + BASE + '/" style="color:#0a0a0b;text-decoration:none;font-weight:bold;">runbyte.eu</a>' +
+            '<span style="color:#e0a800;">&nbsp;&nbsp;&#9679;&nbsp;&nbsp;</span>' +
+            '<a href="mailto:info@runbyte.eu" style="color:#0a0a0b;text-decoration:none;">info@runbyte.eu</a>' +
+            (tel ? '<span style="color:#e0a800;">&nbsp;&nbsp;&#9679;&nbsp;&nbsp;</span><a href="tel:' + esc(tel) + '" style="color:#0a0a0b;text-decoration:none;">' + esc(phone) + '</a>' : '') +
+          '</td></tr>' +
+          '<tr><td style="padding:14px 0 0 0;"><table cellpadding="0" cellspacing="0" border="0" role="presentation" width="480" style="border-collapse:collapse;width:480px;max-width:100%;"><tr><td style="border-top:1px solid #e5e3dc;font-size:0;line-height:0;height:1px;">&nbsp;</td></tr></table></td></tr>' +
+          '<tr><td style="padding:10px 0 0 0;font-size:11px;line-height:16px;color:#8a8a86;">RunByte UAB &middot; Company code 308145424 &middot; Giruli&#371; g. 5, LT-12124 Vilnius</td></tr>' +
+        '</table>';
+      };
+      const text = (name, role, phone) => [name, role + ' · RunByte', '', 'runbyte.eu · info@runbyte.eu' + (phone ? ' · ' + phone : ''), 'RunByte UAB · Company code 308145424 · Girulių g. 5, LT-12124 Vilnius'].join('\n');
+      const render = () => {
+        $('sig').innerHTML = html($('sigName').value.trim() || 'Your Name', $('sigRole').value.trim() || 'Founder', $('sigPhone').value.trim());
+        const img = $('sig').querySelector('img');
+        img.addEventListener('error', () => { $('imgWarn').hidden = false; });
+        img.addEventListener('load', () => { $('imgWarn').hidden = true; });
+      };
+      ['sigName', 'sigRole', 'sigPhone'].forEach((id) => $(id).addEventListener('input', render));
+      $('copy').addEventListener('click', async () => {
+        const n = $('sigName').value.trim() || 'Your Name', r = $('sigRole').value.trim() || 'Founder', p = $('sigPhone').value.trim();
+        try {
+          await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html(n, r, p)], { type: 'text/html' }), 'text/plain': new Blob([text(n, r, p)], { type: 'text/plain' }) })]);
+          $('status').textContent = 'Скопировано. Вставь в редактор подписи Spacemail.';
+        } catch (e) {
+          const range = document.createRange(); range.selectNodeContents($('sig'));
+          const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+          $('status').textContent = 'Подпись выделена: нажми Ctrl+C / Cmd+C.';
+        }
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
