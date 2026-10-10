@@ -133,14 +133,25 @@ npx wrangler deploy     # выведет URL вида https://runbyte.<акка�
 
 После подключения домена: добавить сайт в Google Search Console и отправить `https://runbyte.eu/sitemap.xml`.
 
+## Cookies
+
+Баннер подключён на всех страницах (`public/assets/js/consent.js`, `public/assets/css/consent.css`). Сейчас сайт не ставит необязательных cookies, поэтому кнопки только сохраняют выбор в `localStorage` под ключом `rb-consent`. «Cookie settings» в футере открывает баннер снова.
+
+Если подключите аналитику, запускайте её только после согласия:
+
+```js
+const start = () => { /* код аналитики */ };
+if (window.runbyteConsent?.allows('analytics')) start();
+document.addEventListener('rb:consent', (e) => { if (e.detail.analytics) start(); });
+```
+
 ## Юридические данные
 
-Оператор сайта: **RunByte UAB**, company code **308145424**, Литва. Реквизиты стоят в футере главной, в `public/legal/index.html`, `public/privacy/index.html` и в JSON-LD главной (`legalName`, `identifier`).
+Оператор сайта: **RunByte UAB**, company code **308145424**, Girulių g. 5, LT-12124 Vilnius. Не плательщик НДС. Реквизиты стоят в футере главной, в `public/legal/index.html`, `public/privacy/index.html` и в JSON-LD главной (`legalName`, `identifier`).
 
 ## Что поменять перед публикацией
 
 - Секрет `RESEND_API_KEY` для формы (см. выше).
-- `public/legal/index.html`, строка «Registered office»: вписать юридический адрес из регистра. Закон Литвы об услугах информационного общества требует указывать его на сайте.
-- Если компания плательщик НДС, добавить строку «VAT code» туда же.
+- Если компания станет плательщиком НДС, заменить строку «VAT» в `public/legal/index.html` на код НДС.
 - Если подключите почтовый сервис для формы, назвать его в `public/privacy/index.html`, раздел «Who receives the data».
 - «EST. 2017» в углу hero.

@@ -56,6 +56,9 @@
         },
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Girulių g. 5",
+          "postalCode": "LT-12124",
+          "addressLocality": "Vilnius",
           "addressCountry": "LT"
         }
       },
@@ -121,6 +124,13 @@
         "legalName": "RunByte UAB",
         "parentOrganization": {
           "@id": "https://runbyte.eu/#org"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Girulių g. 5",
+          "postalCode": "LT-12124",
+          "addressLocality": "Vilnius",
+          "addressCountry": "LT"
         }
       },
       {
@@ -176,6 +186,7 @@
   <link rel="preload" href="assets/fonts/ibm-plex-mono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css?v=3">
   <link rel="stylesheet" href="assets/css/main.css?v=3">
+  <link rel="stylesheet" href="assets/css/consent.css?v=1">
 </head>
 <body class="is-loading">
 
@@ -627,7 +638,7 @@
     <div class="footer__flap" id="footerFlap" data-word="RUNBYTE" aria-hidden="true"></div>
     <div class="footer__bottom mono">
       <span>© 2026 RunByte UAB · Company code 308145424</span>
-      <span><a href="/privacy/">Privacy policy</a> · <a href="/legal/">Legal notice</a></span>
+      <span><a href="/privacy/">Privacy policy</a> · <a href="/legal/">Legal notice</a> · <button type="button" class="consent-link" data-consent-open>Cookie settings</button></span>
     </div>
   </footer>
 
@@ -638,5 +649,6 @@
   <script src="assets/js/vendor/CustomEase.min.js"></script>
   <script src="assets/js/vendor/lenis.min.js"></script>
   <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/consent.js?v=1" defer></script>
 </body>
 </html>

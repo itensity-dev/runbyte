@@ -21,6 +21,8 @@
   <link rel="preload" href="/assets/fonts/archivo-normal-100-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
   <link rel="stylesheet" href="/assets/css/legal.css?v=3">
+  <link rel="stylesheet" href="/assets/css/consent.css?v=1">
+  <script src="/assets/js/consent.js?v=1" defer></script>
 </head>
 <body>
   <header class="top">
@@ -45,12 +47,12 @@
     </aside>
     <article class="doc__body">
       <h1>Privacy policy</h1>
-      <p class="updated mono">Last updated 9 October 2026</p>
+      <p class="updated mono">Last updated 10 October 2026</p>
 
       <p>This policy explains what personal data RunByte UAB collects through runbyte.eu, why, and what rights you have. We collect as little as we need, we do not sell data, and we do not use analytics or advertising trackers.</p>
 
       <h2><span class="mono">01</span>Who is responsible</h2>
-      <p>The data controller is <strong>RunByte UAB</strong>, company code 308145424, registered in the Register of Legal Entities of the Republic of Lithuania. Contact for any privacy question: <a href="mailto:info@runbyte.eu">info@runbyte.eu</a>.</p>
+      <p>The data controller is <strong>RunByte UAB</strong>, company code 308145424, registered office Girulių g. 5, LT-12124 Vilnius, Lithuania. Contact for any privacy question: <a href="mailto:info@runbyte.eu">info@runbyte.eu</a>.</p>
 
       <h2><span class="mono">02</span>What we collect and why</h2>
       <div class="table-wrap">
@@ -76,10 +78,11 @@
       </div>
       <p>You are not required to give us any personal data. Without your name and email, however, we cannot reply to a request.</p>
 
-      <h2><span class="mono">03</span>Cookies and browser storage</h2>
-      <p>This website does not use analytics, advertising or tracking cookies, and it does not load fonts, scripts or media from third parties.</p>
+      <h2 id="cookies"><span class="mono">03</span>Cookies and browser storage</h2>
+      <p>This website does not use analytics, advertising or tracking cookies, and it does not load fonts, scripts or media from third parties. If we ever add optional cookies, such as analytics, they will only run after you click "Accept" in the cookie notice.</p>
       <ul>
         <li><strong>Session storage.</strong> We store one value, <code>rb2-loaded</code>, in your browser's session storage so the intro animation is shorter when you reload the page. It contains no personal data and is deleted when you close the tab.</li>
+        <li><strong>Your cookie choice.</strong> When you answer the cookie notice, we store your choice, <code>rb-consent</code>, in your browser's local storage so we don't ask again. You can change it any time with "Cookie settings" at the bottom of every page.</li>
         <li><strong>Security cookies.</strong> Our hosting provider, Cloudflare, may set strictly necessary cookies such as <code>__cf_bm</code> to tell people from bots. They are needed to keep the website secure and do not require consent.</li>
       </ul>
 
@@ -121,7 +124,7 @@
   </main>
   <footer class="foot mono">
     <span>© 2026 RunByte UAB · Company code 308145424</span>
-    <span><a href="/privacy/">Privacy</a> · <a href="/legal/">Legal notice</a> · <a href="mailto:info@runbyte.eu">info@runbyte.eu</a></span>
+    <span><a href="/privacy/">Privacy</a> · <a href="/legal/">Legal notice</a> · <button type="button" class="consent-link" data-consent-open>Cookie settings</button> · <a href="mailto:info@runbyte.eu">info@runbyte.eu</a></span>
   </footer>
 </body>
 </html>

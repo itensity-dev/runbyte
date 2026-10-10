@@ -25,3 +25,6 @@
 
 /api/*
   Cache-Control: no-store
+
+/assets/js/consent.js
+  Cache-Control: public, max-age=0, must-revalidate
